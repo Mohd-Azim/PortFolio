@@ -18,7 +18,7 @@ export const portfolio = {
     domains:
       'telecom billing, enterprise trading, AI-augmented backends and subscription platforms',
     email: 'mohdazim6309@gmail.com',
-    phone: '+91-7052909929',
+    phone: '+91-70XXXXXX29',
     location: 'Delhi, India',
     linkedin: 'https://www.linkedin.com/in/mohd-azim-922373204',
     linkedinHandle: 'www.linkedin.com/in/mohd-azim-922373204',

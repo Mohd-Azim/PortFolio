@@ -1,0 +1,32 @@
+[
+  {
+    "id": "stack",
+    "question": "What is your main programming stack?",
+    "answer": "My core stack includes Java (up to Java 21), Spring Boot, Microservices architecture, Kafka, Redis, SQL (MySQL, PostgreSQL), and cloud services like AWS (EC2, S3, ECS). I also write Python scripts and have working knowledge of JavaScript and React."
+  },
+  {
+    "id": "paytm",
+    "question": "Tell me about your experience at Paytm.",
+    "answer": "At Paytm, I served as a Software Engineer developing high-throughput subscription and billing platform APIs for 27M+ users. I also successfully led a critical modernization effort to upgrade a 15-year-old enterprise platform from Java 1.6 to Java 21 with zero production downtime, introducing security enhancements and Kafka event-driven pipelines."
+  },
+  {
+    "id": "ai",
+    "question": "Have you worked with AI/LLMs?",
+    "answer": "Yes! I designed and built an Operational Incident Intelligence service at Paytm using Spring AI and LangChain4j. It runs semantic search and RAG pipelines over configurations, runbooks, and contracts, significantly reducing MTTR for billing-related incidents."
+  },
+  {
+    "id": "availability",
+    "question": "Are you open to contract or full-time roles?",
+    "answer": "Yes! I am currently 'Open to new opportunities', including remote work, full-time backend engineering positions, and enterprise contracts."
+  },
+  {
+    "id": "contact",
+    "question": "How can I schedule a call with you?",
+    "answer": "To schedule a call, please fill out the Contact Form at the bottom of this page. Once you submit your details and message, I will get back to you immediately to arrange a calendar slot. Note that my phone number is masked online to encourage scheduled scheduling!"
+  },
+  {
+    "id": "sapient",
+    "question": "What did you do at Publicis Sapient?",
+    "answer": "At Publicis Sapient, I worked as an Associate Software Engineer building enterprise Java solutions on the Openlink Endur commodity trading platform. I automated deal-booking workflows, developed SQL validation triggers, and maintained CI/CD pipelines in Jenkins and Azure DevOps."
+  }
+]

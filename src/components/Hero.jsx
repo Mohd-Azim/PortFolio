@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { ArrowDown, Download, Mail } from 'lucide-react'
 import { portfolio } from '../data/portfolio'
+import InteractiveTerminal from './InteractiveTerminal'
 
 export default function Hero() {
   const { personal, hero } = portfolio
@@ -75,46 +76,7 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="relative"
         >
-          <div className="glass-card overflow-hidden shadow-2xl shadow-primary/10">
-            <div className="flex items-center gap-2 border-b border-border/50 bg-muted/30 px-4 py-3">
-              <div className="h-3 w-3 rounded-full bg-red-500/80" />
-              <div className="h-3 w-3 rounded-full bg-yellow-500/80" />
-              <div className="h-3 w-3 rounded-full bg-green-500/80" />
-              <span className="ml-2 font-mono text-xs text-muted-foreground">
-                developer.ts
-              </span>
-            </div>
-            <pre className="overflow-x-auto p-6 font-mono text-sm leading-relaxed">
-              <code>
-                <span className="text-accent">const</span>{' '}
-                <span className="text-primary">dev</span> = {'{'}
-                {'\n'}
-                {'  '}
-                <span className="text-muted-foreground">name:</span>{' '}
-                <span className="text-emerald-400">{hero.codeSnippet.name}</span>,
-                {'\n'}
-                {'  '}
-                <span className="text-muted-foreground">role:</span>{' '}
-                <span className="text-emerald-400">{hero.codeSnippet.role}</span>,
-                {'\n'}
-                {'  '}
-                <span className="text-muted-foreground">stack:</span> [
-                {'\n'}
-                {hero.codeSnippet.stack.map((item, i) => (
-                  <span key={item}>
-                    {'    '}
-                    <span className="text-emerald-400">{item}</span>
-                    {i < hero.codeSnippet.stack.length - 1 ? ',' : ''}
-                    {'\n'}
-                  </span>
-                ))}
-                {'  '}]
-                {'\n'}
-                {'};'}
-              </code>
-            </pre>
-          </div>
-          <div className="absolute -inset-4 -z-10 rounded-2xl bg-gradient-to-r from-primary/20 via-accent/20 to-primary/20 blur-2xl" />
+          <InteractiveTerminal />
         </motion.div>
       </div>
 

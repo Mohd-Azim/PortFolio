@@ -21,7 +21,7 @@ export default function Contact() {
 
   const contactItems = [
     { icon: Mail, label: 'Email', value: personal.email, href: `mailto:${personal.email}` },
-    { icon: Phone, label: 'Phone', value: personal.phone, href: `tel:${personal.phone}` },
+    { icon: Phone, label: 'Phone', value: personal.phone, href: personal.phone.includes('XX') ? null : `tel:${personal.phone}` },
     { icon: MapPin, label: 'Location', value: personal.location, href: null },
     {
       icon: Link,
