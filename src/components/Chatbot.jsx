@@ -188,7 +188,10 @@ export default function Chatbot() {
             {/* Suggestion Chips */}
             <div className="px-4 py-2 bg-muted/20 border-t border-border/30">
               <p className="text-[10px] text-muted-foreground font-mono uppercase tracking-wider mb-1.5">Suggestions:</p>
-              <div className="flex flex-wrap gap-1.5 max-h-[85px] overflow-y-auto">
+              <div 
+                style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+                className="flex flex-wrap gap-1.5 max-h-[85px] overflow-y-auto no-scrollbar"
+              >
                 {chatbotData.map((qa) => (
                   <button
                     key={qa.id}
@@ -196,7 +199,7 @@ export default function Chatbot() {
                     onClick={() => handleSendMessage(qa.question)}
                     className="text-[11px] text-left text-primary hover:text-primary-foreground border border-primary/20 hover:bg-primary/95 px-2.5 py-1 rounded-full transition-all duration-200"
                   >
-                    {qa.question.replace('What is your ', '').replace('Tell me about your ', '').replace('How can I ', '')}
+                    {qa.label || qa.question}
                   </button>
                 ))}
               </div>

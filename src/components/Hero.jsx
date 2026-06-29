@@ -43,7 +43,8 @@ export default function Hero() {
               View Projects
             </a>
             <a
-              href={`mailto:${personal.email}?subject=Resume Request`}
+              href={personal.resumeUrl}
+              download="Mohd_Azim_Resume.pdf"
               className="inline-flex items-center gap-2 rounded-lg border border-border bg-secondary/50 px-6 py-3 text-sm font-medium transition-colors hover:border-primary/50 hover:text-primary"
             >
               <Download size={16} />

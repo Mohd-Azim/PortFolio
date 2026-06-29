@@ -1,0 +1,56 @@
+[
+  {
+    "id": "rag-spring-boot",
+    "title": "Understanding Retrieval-Augmented Generation (RAG) in Spring Boot",
+    "excerpt": "Learn how to build intelligent, context-aware enterprise search tools using Spring AI and LangChain4j vector pipelines.",
+    "date": "2026-06-25",
+    "category": "Generative AI",
+    "readTime": "6 min read",
+    "content": "Retrieval-Augmented Generation (RAG) is a powerful pattern that bridges the gap between static Large Language Models (LLMs) and private enterprise data.\n\n### The RAG Pipeline Workflow:\n1. **Data Ingestion**: Reading unstructured PDFs, configuration runbooks, or API contracts.\n2. **Document Chunking & Vectorization**: Splitting documents into digestible sentences or paragraphs, passing them through an embedding model (like OpenAI text-embedding-3), and storing the vectors in a vector database.\n3. **Retrieval**: When a user queries, we convert their prompt into a query vector, perform a cosine-similarity semantic search inside the vector database, and extract the top-K relevant chunks.\n4. **Context Synthesis**: Passing the original question alongside the retrieved text chunks to the LLM (e.g. GPT-4o) so it can formulate an accurate, data-grounded response.\n\nIn Java, **Spring AI** and **LangChain4j** provide premium, native toolsets to implement this. At Paytm, we implemented this pattern to ingest configurations, runbooks, and billing contracts, accelerating incident response and cutting down MTTR significantly. By combining Spring Boot's dependency injection with vector pipelines, RAG applications can be set up in a type-safe, maintainable manner."
+  },
+  {
+    "id": "event-driven-kafka",
+    "title": "Architecting Event-Driven Systems with Apache Kafka",
+    "excerpt": "A deep dive into building decoupled, high-throughput backend services using Kafka event streams at Paytm scale.",
+    "date": "2026-06-20",
+    "category": "System Design",
+    "readTime": "8 min read",
+    "content": "When designing high-throughput billing and subscription platforms serving 27M+ users, synchronous REST APIs often become performance bottlenecks. Upstream delays can snowball, leading to database lock starvation and service outages. This is where event-driven design with **Apache Kafka** excels.\n\n### Core Kafka Concepts:\n*   **Topics and Partitions**: Topics are append-only commit logs split into multiple partitions. Partitions allow messages to be processed concurrently across separate consumers.\n*   **Consumer Groups**: Decorating services with `@KafkaListener` and placing them in a consumer group allows Kafka to balance partition ownership across active app instances, providing effortless horizontal scale.\n*   **Idempotency & Delivery Guarantees**: Under traffic spikes, systems must ensure at-least-once delivery. Upstream microservices must use idempotent consumer logic (e.g., storing message IDs in a Redis cache) to prevent double-charging or duplicate deal bookings.\n\nAt Paytm, asynchronous event streams allowed us to publish payment events to Kafka immediately and process telecom charging flows in the background, absorbing major billing transaction spikes without impacting customer facing response times."
+  },
+  {
+    "id": "java-21-modernization",
+    "title": "Modern Backend Modernization: Migrating from Java 8 to Java 21",
+    "excerpt": "Key highlights, compiler enhancements, and real-world migration patterns when upgrading enterprise applications.",
+    "date": "2026-06-15",
+    "category": "Java Core",
+    "readTime": "7 min read",
+    "content": "Migrating a 15-year-old enterprise platform from legacy Java versions to modern Java 21 LTS is a daunting task, yet it unlocks significant cost savings and developer productivity. During my time at Paytm, I led a zero-downtime Java modernization of billing systems that served millions.\n\n### Why Upgrade to Java 21?\n1. **Virtual Threads (Project Loom)**: Lightweight threads managed by the JVM rather than the OS. This allows application servers (like Tomcat) to handle millions of concurrent HTTP connections without thread exhaustion, converting blocking network requests into cheap, non-blocking CPU operations.\n2. **Records**: Immutability by design. Instead of boilerplates, declaring `public record User(String id, String email) {}` generates clean, final fields, constructor, getters, and equals/hashCode in a single line.\n3. **Pattern Matching for Switch**: Enables elegant type inspections:\n   ```java\n   switch (event) {\n       case BillingEvent b -> processBilling(b);\n       case AuthEvent a -> processAuth(a);\n       default -> log.warn(\"Unknown event\");\n   }\n   ```\n\nUpgrading the compiler, updating libraries, resolving deprecated APIs, and testing garbage collection parameters under load is challenging, but the operational savings on AWS hardware from Virtual Threads alone makes the transition highly recommended."
+  },
+  {
+    "id": "redis-caching-strategies",
+    "title": "Distributed Caching Strategies: Redis vs. Database Queries",
+    "excerpt": "How to design low-latency systems by integrating Redis cache clusters and avoiding DB bottleneck failures.",
+    "date": "2026-06-10",
+    "category": "System Design",
+    "readTime": "5 min read",
+    "content": "Databases are hard to scale. Every read query locks rows or consumes connection pool slots. To achieve sub-millisecond response times under peak traffic, a distributed caching layer using **Redis** is essential.\n\n### Top Caching Patterns:\n*   **Cache-Aside**: The application checks the cache first. On a cache hit, data is returned instantly. On a cache miss, the data is queried from the relational DB (like PostgreSQL), saved into Redis with a Time-To-Live (TTL), and returned. This is the most common approach.\n*   **Write-Through**: The application writes to the cache, and the cache immediately syncs the write to the main database.\n*   **Cache Eviction & TTL**: Setting proper TTL thresholds is critical. Stale user subscriptions can lead to billing errors. Use cache-invalidation hooks on databases or Kafka event listeners to clear key clusters as soon as subscription updates occur."
+  },
+  {
+    "id": "microservice-security",
+    "title": "Securing Microservices: JWT, Spring Security, and Rate Limiting",
+    "excerpt": "Hardening enterprise endpoints against credential stuffing, injection attacks, and DDoS spikes.",
+    "date": "2026-06-05",
+    "category": "Security",
+    "readTime": "6 min read",
+    "content": "A backend application is only as good as its security. In a distributed microservice network, securing endpoints requires decoupling authentication from authorization.\n\n### Essential Security Layers:\n1. **JWT & OAuth2**: The API Gateway validates incoming OAuth2 authentication headers, extracting user roles and mapping them as claims inside a signed JSON Web Token (JWT). App instances verify the gate signature locally without hitting a central auth server.\n2. **Spring Security**: Enable method-level security (`@PreAuthorize(\"hasRole('ADMIN')\")`) to enforce role bindings inside specific service layers.\n3. **Rate Limiting**: Using token-bucket algorithms (e.g. Bucket4j or Redis rate limiters) prevents API abuse. Implement rate limiters on sensitive user logins and charging endpoints to ward off bot attacks and denial-of-service attempts."
+  },
+  {
+    "id": "saga-distributed-transactions",
+    "title": "Implementing SAGA Pattern for Distributed Transaction Management",
+    "excerpt": "How to maintain eventual consistency across decoupled microservice databases without locking resources.",
+    "date": "2026-05-25",
+    "category": "System Design",
+    "readTime": "9 min read",
+    "content": "In microservice architectures, each service has its own database. In this setup, traditional 2-Phase Commit (2PC) transactions introduce severe performance bottlenecks because databases lock database rows across the entire network until all steps succeed.\n\nTo solve this, we use the **SAGA Pattern** to manage transactions as a sequence of local transactions:\n*   **Orchestration SAGA**: A central coordinator service directs the microservices to perform transaction steps. If one step fails (e.g., payment is rejected), the orchestrator triggers compensating actions in reverse order to roll back database states (e.g., cancelling the booked seat).\n*   **Choreography SAGA**: Services execute local steps and publish events to a broker (like Kafka). Other services listen and act. While highly decoupled, choreography is harder to trace. For complex workflows (like billing and account provisioning), Orchestration is preferred."
+  }
+]

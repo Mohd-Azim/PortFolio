@@ -76,10 +76,10 @@ export default function IntroCountdown({ onComplete }) {
       }
       setPhaseText(texts[count] || 'Ready...')
       
-      // Increased countdown speed (450ms instead of 600ms)
+      // Increased countdown speed (320ms instead of 450ms)
       const timer = setTimeout(() => {
         setCount(count - 1)
-      }, 450)
+      }, 320)
       return () => clearTimeout(timer)
     } else {
       // Trigger Explosion
@@ -125,7 +125,7 @@ export default function IntroCountdown({ onComplete }) {
                   strokeDasharray={2 * Math.PI * 72}
                   initial={{ strokeDashoffset: 0 }}
                   animate={{ strokeDashoffset: (2 * Math.PI * 72) * (1 - count / 5) }}
-                  transition={{ duration: 0.45, ease: 'linear' }}
+                  transition={{ duration: 0.32, ease: 'linear' }}
                 />
               </svg>
 
