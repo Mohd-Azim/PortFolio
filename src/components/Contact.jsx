@@ -1,8 +1,7 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Mail, Phone, MapPin, Link, Code2, Loader2, Send } from 'lucide-react'
-import { ToastContainer, toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
+import { Toaster, toast } from 'sonner'
 import { portfolio } from '../data/portfolio'
 
 export default function Contact() {
@@ -46,15 +45,7 @@ export default function Contact() {
         body: bodyParams.toString()
       })
 
-      toast.success('Response saved! Opening for new message.', {
-        position: 'bottom-right',
-        autoClose: 4000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        theme: 'colored',
-      })
+      toast.success('Response saved! Opening for new message.')
 
       // Reset form
       setFormData({
@@ -66,11 +57,7 @@ export default function Contact() {
       })
     } catch (err) {
       console.error('Google form post error:', err)
-      toast.error('Failed to submit. Please mail directly to ' + personal.email, {
-        position: 'bottom-right',
-        autoClose: 5000,
-        theme: 'colored',
-      })
+      toast.error('Failed to submit. Please mail directly to ' + personal.email)
     } finally {
       setSubmitting(false)
     }
@@ -282,7 +269,7 @@ export default function Contact() {
           </motion.div>
         </div>
       </div>
-      <ToastContainer />
+      <Toaster position="bottom-right" richColors />
     </section>
   )
 }
