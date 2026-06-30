@@ -178,55 +178,55 @@ export default function InteractiveTerminal() {
   const formatLineColor = (text) => {
     if (text.startsWith('[INFO]')) {
       if (text.includes('BUILD SUCCESS')) return 'text-emerald-400 font-bold'
-      return 'text-sky-400/80'
+      return 'text-sky-400 font-medium'
     }
     if (text.includes('INFO') && text.includes('---')) {
       // Spring Boot Log Line styling
       return 'text-zinc-300'
     }
     if (text.includes(':: Spring Boot ::')) {
-      return 'text-emerald-400 font-semibold'
+      return 'text-emerald-400 font-bold'
     }
     if (text.startsWith('* ')) {
       // Git log styling
-      return 'text-yellow-400/90'
+      return 'text-yellow-400'
     }
     if (text.includes('CONTAINER ID')) {
       return 'text-zinc-400 font-bold'
     }
     if (text.startsWith('Service:') || text.startsWith('Status:')) {
       // AWS status outputs
-      return 'text-violet-400'
+      return 'text-violet-400 font-medium'
     }
     if (text.includes('[ Languages ]') || text.includes('[ Frameworks & Backend ]') || text.includes('[ Cloud & DevOps ]')) {
-      return 'text-primary font-bold mt-2'
+      return 'text-[#ff5f38] font-bold mt-2'
     }
     if (text.includes('██████████')) {
-      return 'text-emerald-400 font-mono'
+      return 'text-emerald-400 font-mono font-medium'
     }
     return 'text-zinc-200'
   }
 
   return (
     <div 
-      className="overflow-hidden rounded-lg shadow-2xl border border-zinc-700/80"
-      style={{ background: '#0d1117' }}
+      className="overflow-hidden rounded-lg shadow-[0_25px_60px_-15px_rgba(0,0,0,0.6)] border border-zinc-800"
+      style={{ backgroundColor: '#000000' }}
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
       {/* Terminal Title Bar */}
-      <div className="flex items-center justify-between border-b border-zinc-700/60 px-4 py-3 select-none" style={{ background: '#161b22' }}>
+      <div className="flex items-center justify-between border-b border-zinc-800 px-4 py-3 select-none" style={{ backgroundColor: '#121212' }}>
         <div className="flex items-center gap-2">
-          <div className="h-3 w-3 rounded-full bg-red-500/80" />
-          <div className="h-3 w-3 rounded-full bg-yellow-500/80" />
-          <div className="h-3 w-3 rounded-full bg-green-500/80" />
-          <span className="ml-2 font-mono text-xs text-zinc-400">
+          <div className="h-3 w-3 rounded-full bg-[#ff5f56]" />
+          <div className="h-3 w-3 rounded-full bg-[#ffbd2e]" />
+          <div className="h-3 w-3 rounded-full bg-[#27c93f]" />
+          <span className="ml-2 font-mono text-xs text-zinc-400 font-medium">
             bash — azim@paytm-billing-platform
           </span>
         </div>
         <div className="flex items-center gap-2">
           {isPaused ? (
-            <span className="text-[10px] text-yellow-400 font-semibold font-mono bg-yellow-500/10 border border-yellow-500/20 px-2 py-0.5 rounded animate-pulse">
+            <span className="text-[10px] text-yellow-400 font-semibold font-mono bg-yellow-500/10 border border-yellow-500/20 px-2 py-0.5 rounded">
               ❚❚ PAUSED
             </span>
           ) : (
@@ -240,16 +240,16 @@ export default function InteractiveTerminal() {
       {/* Terminal Output Stream */}
       <div 
         ref={terminalBodyRef}
-        className="p-4 sm:p-6 font-mono text-xs leading-relaxed overflow-y-auto h-[240px] sm:h-[350px] scrollbar-thin scrollbar-thumb-zinc-700 scrollbar-track-transparent"
-        style={{ background: '#0d1117' }}
+        className="p-4 sm:p-6 font-mono text-xs leading-relaxed overflow-y-auto h-[240px] sm:h-[350px] scrollbar-thin scrollbar-thumb-zinc-800 scrollbar-track-transparent antialiased"
+        style={{ backgroundColor: '#000000' }}
       >
         <div className="space-y-1">
           {displayedLines.map((line, idx) => (
             <div key={idx} className="whitespace-pre-wrap">
               {line.type === 'input' ? (
                 <div>
-                  <span className="text-emerald-500">azim@paytm-billing:~$</span>{' '}
-                  <span className="text-white font-medium">{line.text}</span>
+                  <span className="text-emerald-500 font-semibold">azim@paytm-billing:~$</span>{' '}
+                  <span className="text-white font-semibold">{line.text}</span>
                 </div>
               ) : (
                 <div className={formatLineColor(line.text)}>{line.text}</div>
@@ -260,8 +260,8 @@ export default function InteractiveTerminal() {
           {/* Current input line details (rendered character-by-character) */}
           {!isPaused && SCRIPT[currentIdx]?.type === 'input' && (
             <div className="whitespace-pre-wrap">
-              <span className="text-emerald-500">azim@paytm-billing:~$</span>{' '}
-              <span className="text-white font-medium">{typedText}</span>
+              <span className="text-emerald-500 font-semibold">azim@paytm-billing:~$</span>{' '}
+              <span className="text-white font-semibold">{typedText}</span>
               <span className="w-1.5 h-3.5 ml-0.5 bg-primary animate-pulse inline-block align-middle" />
             </div>
           )}
@@ -269,7 +269,7 @@ export default function InteractiveTerminal() {
       </div>
       
       {/* Visual background ambient glow behind terminal */}
-      <div className="absolute -inset-4 -z-10 rounded-2xl blur-2xl opacity-30 pointer-events-none" style={{ background: 'linear-gradient(135deg, rgba(30,120,200,0.15), rgba(100,60,180,0.12), rgba(30,120,200,0.15))' }} />
+      <div className="absolute -inset-4 -z-10 rounded-2xl blur-3xl opacity-20 pointer-events-none" style={{ background: 'linear-gradient(135deg, rgba(30,120,200,0.25), rgba(100,60,180,0.2), rgba(30,120,200,0.25))' }} />
     </div>
   )
 }

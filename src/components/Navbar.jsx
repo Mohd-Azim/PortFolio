@@ -25,7 +25,7 @@ export default function Navbar() {
     >
       <nav className="section-container flex h-16 items-center justify-between">
         <a href="#" className="font-mono text-sm font-semibold text-primary">
-          {portfolio.site.domain}
+          Mohd Azim
         </a>
 
         <ul className="hidden items-center gap-8 md:flex">

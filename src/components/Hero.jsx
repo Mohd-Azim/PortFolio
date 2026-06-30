@@ -23,9 +23,11 @@ export default function Hero() {
           </div>
 
           <h1 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl lg:text-6xl">
-            Hi, I&apos;m Mohd{' '}
-            <span className="gradient-text">{personal.lastName}</span>
+            Hi, I&apos;m <span className="gradient-text">Mohd Azim</span>
           </h1>
+          <div className="mt-2 text-sm font-mono text-primary font-semibold uppercase tracking-wider">
+            [ Main: Azim ]
+          </div>
 
           <p className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-xl">
             {personal.tagline.split('Java, Spring Boot & Microservices')[0]}
