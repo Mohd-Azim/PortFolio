@@ -3,7 +3,11 @@ import { portfolio } from '../data/portfolio'
 
 export default function Skills() {
   return (
-    <section id="skills" className="relative z-10 py-24 bg-secondary/20">
+    <section
+      id="skills"
+      className="relative z-10 py-24 bg-secondary/20"
+      aria-label="Technical Skills — Mohd Azim Java Backend Engineer"
+    >
       <div className="section-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -26,16 +30,32 @@ export default function Skills() {
               viewport={{ once: true }}
               transition={{ delay: groupIndex * 0.1 }}
               className="glass-card p-6"
+              role="region"
+              aria-label={`${group.category} skills`}
             >
               <h3 className="mb-4 font-semibold text-foreground">{group.category}</h3>
               <div className="space-y-4">
                 {group.items.map((skill) => (
-                  <div key={skill.name}>
+                  <div key={skill.name} itemScope itemType="https://schema.org/DefinedTerm">
                     <div className="mb-1 flex justify-between text-sm">
-                      <span className="text-muted-foreground">{skill.name}</span>
-                      <span className="font-mono text-xs text-primary">{skill.level}%</span>
+                      <span className="text-muted-foreground" itemProp="name">
+                        {skill.name}
+                      </span>
+                      <span
+                        className="font-mono text-xs text-primary"
+                        aria-label={`${skill.level} percent proficiency`}
+                      >
+                        {skill.level}%
+                      </span>
                     </div>
-                    <div className="h-1.5 overflow-hidden rounded-full bg-muted">
+                    <div
+                      className="h-1.5 overflow-hidden rounded-full bg-muted"
+                      role="progressbar"
+                      aria-valuenow={skill.level}
+                      aria-valuemin={0}
+                      aria-valuemax={100}
+                      aria-label={`${skill.name} proficiency: ${skill.level}%`}
+                    >
                       <motion.div
                         initial={{ width: 0 }}
                         whileInView={{ width: `${skill.level}%` }}

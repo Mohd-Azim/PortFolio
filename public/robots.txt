@@ -1,0 +1,71 @@
+# robots.txt — Mohd Azim Portfolio (mohdazim.dev)
+# Last updated: 2026-06-30
+
+# ── General search engine crawlers ──────────────────────────────────────────
+User-agent: *
+Allow: /
+Disallow: /node_modules/
+Disallow: /.git/
+Crawl-delay: 1
+
+# ── Google ───────────────────────────────────────────────────────────────────
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Googlebot-Image
+Allow: /
+
+# ── Bing / Microsoft ─────────────────────────────────────────────────────────
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 0
+
+# ── AI Crawlers — Explicitly Allowed ─────────────────────────────────────────
+# OpenAI / ChatGPT
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+# Anthropic / Claude
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+# Perplexity AI
+User-agent: PerplexityBot
+Allow: /
+
+# Google Gemini / Bard
+User-agent: Google-Extended
+Allow: /
+
+# Meta AI
+User-agent: FacebookBot
+Allow: /
+
+# You.com
+User-agent: YouBot
+Allow: /
+
+# Common Crawl (used by many AI datasets)
+User-agent: CCBot
+Allow: /
+
+# Cohere
+User-agent: cohere-ai
+Allow: /
+
+# Mistral / Le Chat
+User-agent: Mistral-AI
+Allow: /
+
+# ── Sitemap ──────────────────────────────────────────────────────────────────
+Sitemap: https://mohdazim.dev/sitemap.xml

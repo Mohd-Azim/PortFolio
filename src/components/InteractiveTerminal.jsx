@@ -209,18 +209,19 @@ export default function InteractiveTerminal() {
 
   return (
     <div 
-      className="glass-card overflow-hidden shadow-2xl shadow-primary/10 border border-border/80"
+      className="overflow-hidden rounded-lg shadow-2xl border border-zinc-700/80"
+      style={{ background: '#0d1117' }}
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
       {/* Terminal Title Bar */}
-      <div className="flex items-center justify-between border-b border-border/50 bg-muted/30 px-4 py-3 select-none">
+      <div className="flex items-center justify-between border-b border-zinc-700/60 px-4 py-3 select-none" style={{ background: '#161b22' }}>
         <div className="flex items-center gap-2">
           <div className="h-3 w-3 rounded-full bg-red-500/80" />
           <div className="h-3 w-3 rounded-full bg-yellow-500/80" />
           <div className="h-3 w-3 rounded-full bg-green-500/80" />
-          <span className="ml-2 font-mono text-xs text-muted-foreground">
-            bash - azim@paytm-billing-platform
+          <span className="ml-2 font-mono text-xs text-zinc-400">
+            bash — azim@paytm-billing-platform
           </span>
         </div>
         <div className="flex items-center gap-2">
@@ -239,7 +240,8 @@ export default function InteractiveTerminal() {
       {/* Terminal Output Stream */}
       <div 
         ref={terminalBodyRef}
-        className="p-6 font-mono text-xs leading-relaxed overflow-y-auto h-[350px] bg-black/45 scrollbar-thin scrollbar-thumb-border/40 scrollbar-track-transparent"
+        className="p-4 sm:p-6 font-mono text-xs leading-relaxed overflow-y-auto h-[240px] sm:h-[350px] scrollbar-thin scrollbar-thumb-zinc-700 scrollbar-track-transparent"
+        style={{ background: '#0d1117' }}
       >
         <div className="space-y-1">
           {displayedLines.map((line, idx) => (
@@ -267,7 +269,7 @@ export default function InteractiveTerminal() {
       </div>
       
       {/* Visual background ambient glow behind terminal */}
-      <div className="absolute -inset-4 -z-10 rounded-2xl bg-gradient-to-r from-primary/10 via-accent/10 to-primary/10 blur-2xl opacity-40 pointer-events-none" />
+      <div className="absolute -inset-4 -z-10 rounded-2xl blur-2xl opacity-30 pointer-events-none" style={{ background: 'linear-gradient(135deg, rgba(30,120,200,0.15), rgba(100,60,180,0.12), rgba(30,120,200,0.15))' }} />
     </div>
   )
 }

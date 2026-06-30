@@ -5,7 +5,23 @@ export default function About() {
   const { personal, stats, highlights } = portfolio
 
   return (
-    <section id="about" className="relative z-10 py-24">
+    <section
+      id="about"
+      className="relative z-10 py-24"
+      aria-label="About Mohd Azim — Java Backend Engineer"
+      itemScope
+      itemType="https://schema.org/Person"
+    >
+      {/* Hidden machine-readable identity signals for crawlers */}
+      <meta itemProp="name" content="Mohd Azim" />
+      <meta itemProp="jobTitle" content="Java Backend Engineer" />
+      <meta itemProp="url" content="https://mohdazim.dev" />
+      <meta itemProp="email" content="mohdazim6309@gmail.com" />
+      <meta itemProp="addressLocality" content="Delhi" />
+      <meta itemProp="addressCountry" content="IN" />
+      <link itemProp="sameAs" href="https://www.linkedin.com/in/mohd-azim-922373204" />
+      <link itemProp="sameAs" href="https://github.com/Mohd-Azim" />
+
       <div className="section-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -27,7 +43,7 @@ export default function About() {
             viewport={{ once: true }}
             className="space-y-4 text-muted-foreground leading-relaxed"
           >
-            <p>
+            <p itemProp="description">
               {personal.about.split('Java Backend Engineer')[0]}
               <span className="text-foreground font-medium">Java Backend Engineer</span>
               {personal.about.split('Java Backend Engineer')[1]}
@@ -40,11 +56,18 @@ export default function About() {
               query that runs millions of times a day, I love the craft.
             </p>
 
-            <div className="flex flex-wrap gap-2 pt-4">
+            {/* Contact / Location for crawlers */}
+            <address className="not-italic hidden" itemProp="address" itemScope itemType="https://schema.org/PostalAddress">
+              <span itemProp="addressLocality">Delhi</span>,{' '}
+              <span itemProp="addressCountry">India</span>
+            </address>
+
+            <div className="flex flex-wrap gap-2 pt-4" aria-label="Core competencies">
               {highlights.map((item) => (
                 <span
                   key={item}
                   className="rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs font-medium text-primary"
+                  itemProp="knowsAbout"
                 >
                   {item}
                 </span>
@@ -57,6 +80,7 @@ export default function About() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             className="grid grid-cols-2 gap-4"
+            aria-label="Career statistics"
           >
             {stats.map((stat, i) => (
               <div
@@ -69,6 +93,7 @@ export default function About() {
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
                   className="text-3xl font-bold gradient-text"
+                  aria-label={`${stat.value} ${stat.label}`}
                 >
                   {stat.value}
                 </motion.p>

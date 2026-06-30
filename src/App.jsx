@@ -14,6 +14,7 @@ import Chatbot from './components/Chatbot'
 import SarcasticMessage from './components/SarcasticMessage'
 import SystemDesign from './components/SystemDesign'
 import Blog from './components/Blog'
+import CustomCursor from './components/CustomCursor'
 
 export default function App() {
   const [showIntro, setShowIntro] = useState(() => {
@@ -54,6 +55,7 @@ export default function App() {
 
   return (
     <>
+      <CustomCursor />
       {showIntro && <IntroCountdown onComplete={handleIntroComplete} />}
       {showSarcastic && (
         <SarcasticMessage

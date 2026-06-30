@@ -8,7 +8,7 @@ export default function Hero() {
 
   return (
     <section className="relative z-10 min-h-screen flex items-center pt-16">
-      <div className="section-container grid gap-12 lg:grid-cols-2 lg:gap-8 items-center py-20">
+      <div className="section-container grid gap-8 lg:grid-cols-2 lg:gap-12 items-center py-12 sm:py-20">
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
@@ -22,9 +22,9 @@ export default function Hero() {
             {personal.availability}
           </div>
 
-          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
-            Hi, I&apos;m{' '}
-            <span className="gradient-text">{personal.firstName}</span>
+          <h1 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl lg:text-6xl">
+            Hi, I&apos;m Mohd{' '}
+            <span className="gradient-text">{personal.lastName}</span>
           </h1>
 
           <p className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-xl">

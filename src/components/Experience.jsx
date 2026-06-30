@@ -4,7 +4,11 @@ import { portfolio } from '../data/portfolio'
 
 export default function Experience() {
   return (
-    <section id="experience" className="relative z-10 py-24">
+    <section
+      id="experience"
+      className="relative z-10 py-24"
+      aria-label="Work Experience — Mohd Azim Java Backend Engineer"
+    >
       <div className="section-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -28,6 +32,8 @@ export default function Experience() {
               className={`relative mb-12 flex flex-col md:flex-row ${
                 index % 2 === 0 ? 'md:flex-row-reverse' : ''
               }`}
+              itemScope
+              itemType="https://schema.org/OrganizationRole"
             >
               <div className="hidden md:block md:w-1/2" />
               <div
@@ -45,10 +51,20 @@ export default function Experience() {
                       <Briefcase size={20} />
                     </div>
                     <div className={index % 2 === 0 ? 'md:text-right' : ''}>
-                      <p className="text-xs font-mono text-primary">{job.period}</p>
-                      <h3 className="mt-1 text-lg font-semibold">{job.role}</h3>
-                      <p className="text-sm text-muted-foreground">
-                        {job.company} · {job.location}
+                      <p className="text-xs font-mono text-primary" itemProp="startDate">
+                        {job.period}
+                      </p>
+                      <h3 className="mt-1 text-lg font-semibold" itemProp="roleName">
+                        {job.role}
+                      </h3>
+                      <p
+                        className="text-sm text-muted-foreground"
+                        itemScope
+                        itemType="https://schema.org/Organization"
+                      >
+                        <span itemProp="name">{job.company}</span>
+                        {' · '}
+                        <span itemProp="address">{job.location}</span>
                       </p>
                     </div>
                   </div>
@@ -56,6 +72,7 @@ export default function Experience() {
                     className={`mt-4 space-y-2 text-sm text-muted-foreground ${
                       index % 2 === 0 ? 'md:text-right' : ''
                     }`}
+                    aria-label={`Key achievements at ${job.company}`}
                   >
                     {job.highlights.map((item) => (
                       <li key={item} className="leading-relaxed">

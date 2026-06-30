@@ -1,29 +1,47 @@
+/* ─── Google Fonts: Retro editorial stack ───────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 240 15% 4%;
-    --foreground: 210 40% 98%;
-    --card: 240 15% 7%;
-    --card-foreground: 210 40% 98%;
-    --popover: 240 15% 7%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 199 89% 60%;
-    --primary-foreground: 240 15% 4%;
-    --secondary: 240 10% 12%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 240 10% 14%;
-    --muted-foreground: 215 20% 65%;
-    --accent: 270 91% 65%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 240 10% 18%;
-    --input: 240 10% 18%;
-    --ring: 199 89% 60%;
-    --radius: 0.75rem;
+    /* ── Retro parchment palette ───────────────────────────────────────── */
+    --background:         40 28% 93%;    /* warm cream / aged paper        */
+    --foreground:         220 18% 12%;   /* near-black ink                 */
+
+    --card:               38 25% 88%;    /* slightly darker parchment      */
+    --card-foreground:    220 18% 12%;
+
+    --popover:            38 25% 88%;
+    --popover-foreground: 220 18% 12%;
+
+    --primary:            20 85% 48%;    /* burnt orange / terracotta      */
+    --primary-foreground: 40 28% 96%;
+
+    --secondary:          220 15% 20%;   /* dark navy / almost black       */
+    --secondary-foreground: 40 28% 93%;
+
+    --muted:              38 18% 82%;    /* muted warm grey                */
+    --muted-foreground:   220 10% 40%;   /* warm grey text                 */
+
+    --accent:             220 18% 12%;   /* near-black for accents         */
+    --accent-foreground:  40 28% 93%;
+
+    --destructive:        0 72% 51%;
+    --destructive-foreground: 40 28% 96%;
+
+    --border:             38 15% 72%;    /* parchment border               */
+    --input:              38 15% 78%;
+    --ring:               20 85% 48%;
+
+    --radius:             0.25rem;       /* sharper corners = more retro   */
+  }
+
+  /* ── Hide native cursor everywhere ──────────────────────────────────── */
+  *, *::before, *::after {
+    cursor: none !important;
   }
 
   * {
@@ -32,37 +50,105 @@
 
   body {
     @apply bg-background text-foreground;
+    font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
     font-feature-settings: 'cv11', 'ss01';
+    /* subtle grain texture overlay */
+    background-image:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    background-repeat: repeat;
   }
 
   html {
     scroll-behavior: smooth;
   }
 
+  /* ── Retro headings: Playfair Display ───────────────────────────────── */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+    letter-spacing: -0.01em;
+  }
+
+  /* ── Retro selection colour ─────────────────────────────────────────── */
   ::selection {
-    background: hsl(var(--primary) / 0.3);
+    background: hsl(var(--primary) / 0.25);
     color: hsl(var(--foreground));
   }
+
+  /* ── Scrollbar: thin retro style ────────────────────────────────────── */
+  ::-webkit-scrollbar          { width: 6px; }
+  ::-webkit-scrollbar-track    { background: hsl(var(--background)); }
+  ::-webkit-scrollbar-thumb    { background: hsl(var(--border)); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: hsl(var(--muted-foreground)); }
+}
+
+/* ─── Custom cursor hover states ────────────────────────────────────────── */
+.cursor-ring--hover {
+  width:   56px  !important;
+  height:  56px  !important;
+  margin-left: -28px !important;
+  margin-top:  -28px !important;
+  background: hsl(var(--primary) / 0.08) !important;
+}
+
+.cursor-dot--hover {
+  width:   5px !important;
+  height:  5px !important;
 }
 
 @layer utilities {
+  /* ── Gradient text: burnt-orange → near-black ────────────────────────── */
   .gradient-text {
-    @apply bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent;
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(
+      135deg,
+      hsl(var(--primary)) 0%,
+      hsl(var(--foreground)) 60%
+    );
   }
 
+  /* ── Glass card → parchment card for retro feel ──────────────────────── */
   .glass-card {
-    @apply rounded-xl border border-border/50 bg-card/60 backdrop-blur-xl;
+    @apply rounded border border-border bg-card/80;
+    box-shadow: 2px 3px 12px hsl(220 18% 12% / 0.08),
+                inset 0 1px 0 hsl(40 28% 98% / 0.6);
   }
 
   .section-container {
     @apply mx-auto max-w-6xl px-4 sm:px-6 lg:px-8;
   }
 
+  /* ── Section titles: Playfair serif ──────────────────────────────────── */
   .section-title {
+    font-family: 'Playfair Display', Georgia, serif;
     @apply text-3xl font-bold tracking-tight sm:text-4xl;
   }
 
   .section-subtitle {
     @apply mt-2 text-muted-foreground;
+    font-family: 'Inter', ui-sans-serif, sans-serif;
+  }
+
+  /* ── Retro monospace label (used for small labels/badges) ────────────── */
+  .mono-label {
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* ── Retro horizontal rule ───────────────────────────────────────────── */
+  .retro-divider {
+    border: none;
+    border-top: 1px solid hsl(var(--border));
+    opacity: 0.7;
+  }
+
+  /* ── Hide scrollbar while keeping scroll functionality ───────────────── */
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
   }
 }

@@ -1,0 +1,45 @@
+# Mohd Azim — Java Backend Engineer
+
+> Java Backend Engineer based in Delhi, India. Specializing in Spring Boot, Microservices, Apache Kafka, and AI-augmented backend systems. Currently working at Paytm (One97 Communications).
+
+## About
+
+Mohd Azim is a Software Engineer with 3+ years of professional experience building scalable, high-throughput backend systems for enterprise clients. He has shipped production systems serving 27M+ end users at Paytm, including a subscription and billing platform running on Java, Spring Boot, Kafka, Redis, MySQL, and AWS.
+
+He led a zero-downtime Java 1.6 → Java 21 modernization of a 15-year-old enterprise codebase, and built internal AI tools using Spring AI and LangChain4j. Before Paytm, he worked at Publicis Sapient building enterprise commodity-trading solutions on Openlink Endur for global clients.
+
+## Primary Skills
+
+- **Programming Languages**: Java (95%), Python (85%), SQL (90%), JavaScript, TypeScript
+- **Backend Frameworks**: Spring Boot, Spring Security, Spring Data JPA, Hibernate, REST APIs, Microservices
+- **Messaging & Data**: Apache Kafka, Redis, MySQL, PostgreSQL, SQL Server
+- **Cloud & DevOps**: AWS (EC2, S3), GitHub Actions, Jenkins, Azure DevOps, Docker, SonarQube, Grafana
+- **AI Engineering**: Spring AI, LangChain4j, RAG Pipelines, LLM Integration
+
+## Key Projects
+
+1. **High-Scale Subscription & Billing Platform** (Paytm, Production) — Distributed Spring Boot backend for subscription lifecycle and multi-channel billing serving 27M+ users.
+2. **Operational Incident Intelligence Service** (Paytm, Internal) — Spring AI + LangChain4j RAG retrieval service reducing MTTR on billing-critical incidents.
+3. **Agentic Java Backend Service** (Personal) — Spring Boot 3 GenAI service with tool-calling, RAG, and agentic task-execution patterns.
+
+## Blog Posts / Technical Writing
+
+- "Understanding Retrieval-Augmented Generation (RAG) in Spring Boot"
+- "Architecting Event-Driven Systems with Apache Kafka"
+- "Modern Backend Modernization: Migrating from Java 8 to Java 21"
+- "Distributed Caching Strategies: Redis vs. Database Queries"
+- "Securing Microservices: JWT, Spring Security, and Rate Limiting"
+- "Implementing SAGA Pattern for Distributed Transaction Management"
+
+## Contact & Social
+
+- **Email**: mohdazim6309@gmail.com
+- **LinkedIn**: https://www.linkedin.com/in/mohd-azim-922373204
+- **GitHub**: https://github.com/Mohd-Azim
+- **Website**: https://mohdazim.vercel.app
+- **Location**: Delhi, India
+- **Availability**: Open to new opportunities (remote & enterprise contracts)
+
+## Keywords
+
+Java Backend Engineer, Spring Boot Developer, Microservices Architect, Apache Kafka, Java 21, Spring AI, LangChain4j, RAG Pipeline, LLM Integration, AI-augmented backend, REST API design, Distributed Systems, Event-Driven Architecture, Redis caching, AWS EC2, JWT security, Spring Security, OAuth2, Docker, GitHub Actions, CI/CD, DevOps, Paytm engineer, Indian software engineer, backend developer India, Delhi engineer, enterprise Java developer, Java Spring Boot portfolio, backend portfolio India

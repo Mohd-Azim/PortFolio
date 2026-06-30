@@ -1,27 +1,23 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Mail, Phone, MapPin, Link, Code2, Send } from 'lucide-react'
-import { toast } from 'sonner'
+import { Mail, Phone, MapPin, Link, Code2, Loader2 } from 'lucide-react'
 import { portfolio } from '../data/portfolio'
+
+const GOOGLE_FORM_EMBED_URL =
+  'https://docs.google.com/forms/d/e/1FAIpQLScWSifchRIYDAyxArssjGqk09fIAg--pm8IiMxcY1doCDERKQ/viewform?embedded=true'
 
 export default function Contact() {
   const { personal } = portfolio
-  const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' })
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    const body = encodeURIComponent(
-      `From: ${form.name} (${form.email})\n\n${form.message}`,
-    )
-    const mailto = `mailto:${personal.email}?subject=${encodeURIComponent(form.subject)}&body=${body}`
-    window.location.href = mailto
-    toast.success('Opening your email client...')
-    setForm({ name: '', email: '', subject: '', message: '' })
-  }
+  const [iframeLoaded, setIframeLoaded] = useState(false)
 
   const contactItems = [
     { icon: Mail, label: 'Email', value: personal.email, href: `mailto:${personal.email}` },
-    { icon: Phone, label: 'Phone', value: personal.phone, href: personal.phone.includes('XX') ? null : `tel:${personal.phone}` },
+    {
+      icon: Phone,
+      label: 'Phone',
+      value: personal.phone,
+      href: personal.phone.includes('XX') ? null : `tel:${personal.phone}`,
+    },
     { icon: MapPin, label: 'Location', value: personal.location, href: null },
     {
       icon: Link,
@@ -38,8 +34,13 @@ export default function Contact() {
   ]
 
   return (
-    <section id="contact" className="relative z-10 py-24 bg-secondary/20">
+    <section
+      id="contact"
+      aria-label="Contact Mohd Azim — Java Backend Engineer"
+      className="relative z-10 py-24 bg-secondary/20"
+    >
       <div className="section-container">
+        {/* ── Section header ── */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -49,12 +50,13 @@ export default function Contact() {
           <p className="text-sm font-medium text-primary">Contact</p>
           <h2 className="section-title mt-2">Let&apos;s build something</h2>
           <p className="section-subtitle mx-auto max-w-xl">
-            Have a project in mind, a role to discuss, or just want to say hi? My inbox is always
-            open.
+            Have a project in mind, a role to discuss, or just want to say hi? Fill out the form
+            below — I&apos;ll get back to you within 24 hours.
           </p>
         </motion.div>
 
         <div className="mt-12 grid gap-8 lg:grid-cols-2">
+          {/* ── Left: Contact info ── */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -90,75 +92,47 @@ export default function Contact() {
               <p className="text-sm font-medium text-primary">Available for opportunities</p>
               <p className="mt-1 text-sm text-muted-foreground">{personal.openTo}</p>
             </div>
+
+            {/* Direct email CTA */}
+            <div className="mt-6">
+              <a
+                href={`mailto:${personal.email}`}
+                className="inline-flex items-center gap-2 rounded-lg border border-primary/40 bg-primary/10 px-5 py-2.5 text-sm font-medium text-primary transition-colors hover:bg-primary/20"
+              >
+                <Mail size={16} />
+                Email me directly
+              </a>
+            </div>
           </motion.div>
 
-          <motion.form
+          {/* ── Right: Embedded Google Form ── */}
+          <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            onSubmit={handleSubmit}
-            className="glass-card space-y-4 p-6"
+            className="glass-card overflow-hidden p-2"
           >
-            <div>
-              <label htmlFor="name" className="mb-1 block text-sm text-muted-foreground">
-                Name
-              </label>
-              <input
-                id="name"
-                type="text"
-                required
-                value={form.name}
-                onChange={(e) => setForm({ ...form, name: e.target.value })}
-                className="w-full rounded-lg border border-input bg-background px-4 py-2.5 text-sm outline-none focus:border-primary focus:ring-1 focus:ring-primary"
-              />
-            </div>
-            <div>
-              <label htmlFor="email" className="mb-1 block text-sm text-muted-foreground">
-                Email
-              </label>
-              <input
-                id="email"
-                type="email"
-                required
-                value={form.email}
-                onChange={(e) => setForm({ ...form, email: e.target.value })}
-                className="w-full rounded-lg border border-input bg-background px-4 py-2.5 text-sm outline-none focus:border-primary focus:ring-1 focus:ring-primary"
-              />
-            </div>
-            <div>
-              <label htmlFor="subject" className="mb-1 block text-sm text-muted-foreground">
-                Subject
-              </label>
-              <input
-                id="subject"
-                type="text"
-                required
-                value={form.subject}
-                onChange={(e) => setForm({ ...form, subject: e.target.value })}
-                className="w-full rounded-lg border border-input bg-background px-4 py-2.5 text-sm outline-none focus:border-primary focus:ring-1 focus:ring-primary"
-              />
-            </div>
-            <div>
-              <label htmlFor="message" className="mb-1 block text-sm text-muted-foreground">
-                Message
-              </label>
-              <textarea
-                id="message"
-                required
-                rows={4}
-                value={form.message}
-                onChange={(e) => setForm({ ...form, message: e.target.value })}
-                className="w-full resize-none rounded-lg border border-input bg-background px-4 py-2.5 text-sm outline-none focus:border-primary focus:ring-1 focus:ring-primary"
-              />
-            </div>
-            <button
-              type="submit"
-              className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
+            {/* Loading placeholder shown until iframe fires onLoad */}
+            {!iframeLoaded && (
+              <div className="flex h-[600px] items-center justify-center gap-3 text-muted-foreground">
+                <Loader2 size={20} className="animate-spin text-primary" />
+                <span className="text-sm">Loading contact form…</span>
+              </div>
+            )}
+
+            <iframe
+              id="google-contact-form"
+              title="Contact Mohd Azim — Send a Message"
+              src={GOOGLE_FORM_EMBED_URL}
+              onLoad={() => setIframeLoaded(true)}
+              style={{ display: iframeLoaded ? 'block' : 'none' }}
+              className="h-[620px] w-full rounded-lg border-0 bg-transparent"
+              allowFullScreen
+              loading="lazy"
             >
-              <Send size={16} />
-              Send Message
-            </button>
-          </motion.form>
+              Loading contact form…
+            </iframe>
+          </motion.div>
         </div>
       </div>
     </section>

@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  darkMode: 'class',
+  darkMode: 'media',
   content: ['./index.html', './src/**/*.{js,jsx}'],
   theme: {
     extend: {
@@ -42,7 +42,8 @@ export default {
       },
       fontFamily: {
         sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        mono: ['JetBrains Mono', 'ui-monospace', 'monospace'],
+        serif: ['Playfair Display', 'Georgia', 'Times New Roman', 'serif'],
+        mono: ['IBM Plex Mono', 'JetBrains Mono', 'ui-monospace', 'monospace'],
       },
       animation: {
         float: 'float 6s ease-in-out infinite',
