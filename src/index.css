@@ -39,9 +39,11 @@
     --radius:             0.25rem;       /* sharper corners = more retro   */
   }
 
-  /* ── Hide native cursor everywhere ──────────────────────────────────── */
-  *, *::before, *::after {
-    cursor: none !important;
+  /* ── Hide native cursor on mouse/pointer devices only ───────────────── */
+  @media (pointer: fine) {
+    *, *::before, *::after {
+      cursor: none !important;
+    }
   }
 
   * {

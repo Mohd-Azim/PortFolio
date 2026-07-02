@@ -5,6 +5,9 @@ import { useEffect, useRef, useState } from 'react'
  *  - Small filled dot that sits exactly on the pointer
  *  - Larger hollow ring that lags behind (spring-like follow)
  *  - Ring grows + fills lightly when hovering interactive elements
+ *
+ * On touch / mobile devices this component renders nothing and the
+ * native cursor (none) CSS rule is not applied either.
  */
 export default function CustomCursor() {
   const dotRef  = useRef(null)
@@ -19,7 +22,19 @@ export default function CustomCursor() {
 
   const [visible, setVisible] = useState(false)
 
+  // Detect touch / mobile — no custom cursor on those devices.
+  // We check at render time (matchMedia / maxTouchPoints) so we can bail
+  // out before registering any event listeners or rendering DOM elements.
+  const isTouchDevice =
+    typeof window !== 'undefined' &&
+    (window.matchMedia('(pointer: coarse)').matches ||
+      'ontouchstart' in window ||
+      navigator.maxTouchPoints > 0)
+
   useEffect(() => {
+    // Skip on touch devices — nothing to set up
+    if (isTouchDevice) return
+
     const dot  = dotRef.current
     const ring = ringRef.current
     if (!dot || !ring) return
@@ -75,7 +90,10 @@ export default function CustomCursor() {
       document.removeEventListener('mouseout',  onLeave)
       if (raf.current) cancelAnimationFrame(raf.current)
     }
-  }, [])
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Don't render cursor elements on touch / mobile devices
+  if (isTouchDevice) return null
 
   return (
     <>
