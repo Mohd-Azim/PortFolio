@@ -80,14 +80,17 @@ export default function Blog() {
           className="mt-12 flex gap-6 overflow-x-auto no-scrollbar scroll-smooth pb-4 snap-x snap-mandatory"
         >
           {sortedBlogs.map((post, index) => (
-            <motion.div
+            <motion.button
+              type="button"
               key={post.id}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
-              className="snap-start shrink-0 w-[290px] sm:w-[350px] glass-card p-6 flex flex-col justify-between hover:border-primary/45 transition-colors group cursor-pointer"
+              className="snap-start shrink-0 w-[290px] sm:w-[350px] glass-card p-6 flex flex-col justify-between hover:border-primary/45 transition-colors group cursor-pointer text-left"
               onClick={() => setActiveBlog(post)}
+              aria-haspopup="dialog"
+              aria-controls="blog-modal"
             >
               <div>
                 {/* Meta details */}
@@ -134,8 +137,12 @@ export default function Blog() {
               exit={{ opacity: 0 }}
               className="fixed inset-0 z-[99999] bg-black/75 backdrop-blur-md flex items-center justify-center p-4"
               onClick={() => setActiveBlog(null)}
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="blog-modal-title"
             >
               <motion.div
+                id="blog-modal"
                 initial={{ scale: 0.95, y: 15 }}
                 animate={{ scale: 1, y: 0 }}
                 exit={{ scale: 0.95, y: 15 }}
@@ -151,6 +158,7 @@ export default function Blog() {
                   </div>
                   <button
                     onClick={() => setActiveBlog(null)}
+                    aria-label="Close blog article"
                     className="p-1 rounded hover:bg-muted text-muted-foreground hover:text-foreground transition-colors"
                   >
                     <X size={18} />
@@ -174,7 +182,7 @@ export default function Blog() {
                     </span>
                   </div>
 
-                  <h1 className="text-xl md:text-3xl font-bold text-foreground mb-6 leading-tight">
+                  <h1 id="blog-modal-title" className="text-xl md:text-3xl font-bold text-foreground mb-6 leading-tight">
                     {activeBlog.title}
                   </h1>
 

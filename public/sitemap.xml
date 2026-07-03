@@ -62,7 +62,7 @@
 
   <!-- Blog Post — RAG Spring Boot -->
   <url>
-    <loc>https://mohdazim.dev/#rag-spring-boot</loc>
+    <loc>https://mohdazim.vercel.app/#rag-spring-boot</loc>
     <lastmod>2026-06-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -70,7 +70,7 @@
 
   <!-- Blog Post — Kafka Event Driven -->
   <url>
-    <loc>https://mohdazim.dev/#event-driven-kafka</loc>
+    <loc>https://mohdazim.vercel.app/#event-driven-kafka</loc>
     <lastmod>2026-06-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -78,7 +78,7 @@
 
   <!-- Blog Post — Java 21 Migration -->
   <url>
-    <loc>https://mohdazim.dev/#java-21-modernization</loc>
+    <loc>https://mohdazim.vercel.app/#java-21-modernization</loc>
     <lastmod>2026-06-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -86,7 +86,7 @@
 
   <!-- Blog Post — Redis Caching -->
   <url>
-    <loc>https://mohdazim.dev/#redis-caching-strategies</loc>
+    <loc>https://mohdazim.vercel.app/#redis-caching-strategies</loc>
     <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -94,7 +94,7 @@
 
   <!-- Blog Post — Microservice Security -->
   <url>
-    <loc>https://mohdazim.dev/#microservice-security</loc>
+    <loc>https://mohdazim.vercel.app/#microservice-security</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -102,7 +102,7 @@
 
   <!-- Blog Post — SAGA Pattern -->
   <url>
-    <loc>https://mohdazim.dev/#saga-distributed-transactions</loc>
+    <loc>https://mohdazim.vercel.app/#saga-distributed-transactions</loc>
     <lastmod>2026-05-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
