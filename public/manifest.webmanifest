@@ -1,0 +1,18 @@
+{
+  "name": "Mohd Azim Portfolio",
+  "short_name": "Azim Portfolio",
+  "description": "Portfolio of Java Backend Engineer Mohd Azim, featuring Spring Boot microservices, Kafka, AI engineering, and enterprise backend systems.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0a0a0f",
+  "theme_color": "#0a0a0f",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
