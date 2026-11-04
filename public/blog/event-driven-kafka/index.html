@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en-IN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <title>Architecting Event-Driven Systems with Apache Kafka | Mohd Azim</title>
+    <meta name="description" content="A deep dive into building decoupled, high-throughput backend services using Kafka event streams at Paytm scale.">
+    <link rel="canonical" href="https://mohdazim.vercel.app/blog/event-driven-kafka/">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://mohdazim.vercel.app/blog/event-driven-kafka/">
+    <meta property="og:title" content="Architecting Event-Driven Systems with Apache Kafka">
+    <meta property="og:description" content="A deep dive into building decoupled, high-throughput backend services using Kafka event streams at Paytm scale.">
+    <meta property="og:site_name" content="Mohd Azim">
+    <meta property="og:image" content="https://mohdazim.vercel.app/og-image.svg">
+    <meta property="article:published_time" content="2026-06-20T00:00:00.000Z">
+    <meta property="article:author" content="https://mohdazim.vercel.app/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Architecting Event-Driven Systems with Apache Kafka">
+    <meta name="twitter:description" content="A deep dive into building decoupled, high-throughput backend services using Kafka event streams at Paytm scale.">
+    <meta name="twitter:image" content="https://mohdazim.vercel.app/og-image.svg">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://mohdazim.vercel.app/blog/event-driven-kafka/","mainEntityOfPage":{"@type":"WebPage","@id":"https://mohdazim.vercel.app/blog/event-driven-kafka/"},"headline":"Architecting Event-Driven Systems with Apache Kafka","description":"A deep dive into building decoupled, high-throughput backend services using Kafka event streams at Paytm scale.","datePublished":"2026-06-20T00:00:00.000Z","dateModified":"2026-06-20T00:00:00.000Z","author":{"@type":"Person","@id":"https://mohdazim.vercel.app/#person","name":"Mohd Azim","url":"https://mohdazim.vercel.app/"},"articleSection":"System Design","inLanguage":"en-IN"}</script>
+    <style>
+      :root { color-scheme: light; font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; color: #191d24; background: #f7f5ef; }
+      * { box-sizing: border-box; }
+      body { margin: 0; color: #191d24; background: #f7f5ef; line-height: 1.75; }
+      a { color: #8a3515; }
+      .site-header, main, footer { width: min(100% - 2rem, 760px); margin-inline: auto; }
+      .site-header { padding-block: 1.5rem; border-bottom: 1px solid #d5d0c6; }
+      .site-header a { color: #191d24; text-decoration: none; font-weight: 650; }
+      main { padding-block: 2rem 4rem; }
+      nav[aria-label="Breadcrumb"] { font-size: .9rem; margin-bottom: 2rem; }
+      .eyebrow, .meta { color: #55514a; font-size: .9rem; }
+      h1 { font-size: clamp(2rem, 7vw, 3.25rem); line-height: 1.15; letter-spacing: -.035em; margin: .5rem 0 1rem; }
+      .excerpt { font-size: 1.15rem; color: #37342f; }
+      article { margin-top: 2.5rem; }
+      article h2 { font-size: 1.5rem; line-height: 1.35; margin: 2rem 0 .75rem; }
+      article h3, article h4 { line-height: 1.4; margin-top: 1.75rem; }
+      article p, article li { color: #191d24; }
+      article li { margin-block: .5rem; }
+      pre { overflow-x: auto; padding: 1rem; border: 1px solid #d5d0c6; border-radius: .4rem; background: #eeece6; color: #191d24; }
+      code { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; }
+      footer { border-top: 1px solid #d5d0c6; padding-block: 1.5rem 2rem; color: #45413b; }
+      @media (max-width: 480px) { .site-header, main, footer { width: min(100% - 1.5rem, 760px); } }
+    </style>
+  </head>
+  <body>
+    <header class="site-header"><a href="/">Mohd Azim <span aria-hidden="true">·</span> Portfolio</a></header>
+    <main>
+      <nav aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/#blog">Articles</a> / Architecting Event-Driven Systems with Apache Kafka</nav>
+      <article>
+        <header>
+          <p class="eyebrow">System Design</p>
+          <h1>Architecting Event-Driven Systems with Apache Kafka</h1>
+          <p class="excerpt">A deep dive into building decoupled, high-throughput backend services using Kafka event streams at Paytm scale.</p>
+          <p class="meta">By <a href="/">Mohd Azim</a> · <time datetime="2026-06-20">20 June 2026</time> · 8 min read</p>
+        </header>
+        <p>When designing high-throughput billing and subscription platforms serving 27M+ users, synchronous REST APIs often become performance bottlenecks. Upstream delays can snowball, leading to database lock starvation and service outages. This is where event-driven design with <strong>Apache Kafka</strong> excels.</p>
+<h2>Core Kafka Concepts:</h2>
+<ul><li><strong>Topics and Partitions</strong>: Topics are append-only commit logs split into multiple partitions. Partitions allow messages to be processed concurrently across separate consumers.</li><li><strong>Consumer Groups</strong>: Decorating services with <code>@KafkaListener</code> and placing them in a consumer group allows Kafka to balance partition ownership across active app instances, providing effortless horizontal scale.</li><li><strong>Idempotency &amp; Delivery Guarantees</strong>: Under traffic spikes, systems must ensure at-least-once delivery. Upstream microservices must use idempotent consumer logic (e.g., storing message IDs in a Redis cache) to prevent double-charging or duplicate deal bookings.</li></ul>
+<p>At Paytm, asynchronous event streams allowed us to publish payment events to Kafka immediately and process telecom charging flows in the background, absorbing major billing transaction spikes without impacting customer facing response times.</p>
+      </article>
+    </main>
+    <footer>
+      <p>Written by Mohd Azim, Senior Software Engineer.</p>
+      <p><a href="/#blog">More articles</a> · <a href="/#contact">Contact</a> · <a href="https://www.linkedin.com/in/mohd-azim-922373204" rel="me noopener noreferrer">LinkedIn</a></p>
+    </footer>
+  </body>
+</html>

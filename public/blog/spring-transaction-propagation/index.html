@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en-IN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <title>Spring @Transactional Propagation: What to Use and When | Mohd Azim</title>
+    <meta name="description" content="What happens when one Spring service calls another? Here is how the propagation options handle that, and the cases where each one is useful.">
+    <link rel="canonical" href="https://mohdazim.vercel.app/blog/spring-transaction-propagation/">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://mohdazim.vercel.app/blog/spring-transaction-propagation/">
+    <meta property="og:title" content="Spring @Transactional Propagation: What to Use and When">
+    <meta property="og:description" content="What happens when one Spring service calls another? Here is how the propagation options handle that, and the cases where each one is useful.">
+    <meta property="og:site_name" content="Mohd Azim">
+    <meta property="og:image" content="https://mohdazim.vercel.app/og-image.svg">
+    <meta property="article:published_time" content="2026-11-04T00:00:00.000Z">
+    <meta property="article:author" content="https://mohdazim.vercel.app/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Spring @Transactional Propagation: What to Use and When">
+    <meta name="twitter:description" content="What happens when one Spring service calls another? Here is how the propagation options handle that, and the cases where each one is useful.">
+    <meta name="twitter:image" content="https://mohdazim.vercel.app/og-image.svg">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://mohdazim.vercel.app/blog/spring-transaction-propagation/","mainEntityOfPage":{"@type":"WebPage","@id":"https://mohdazim.vercel.app/blog/spring-transaction-propagation/"},"headline":"Spring @Transactional Propagation: What to Use and When","description":"What happens when one Spring service calls another? Here is how the propagation options handle that, and the cases where each one is useful.","datePublished":"2026-11-04T00:00:00.000Z","dateModified":"2026-11-04T00:00:00.000Z","author":{"@type":"Person","@id":"https://mohdazim.vercel.app/#person","name":"Mohd Azim","url":"https://mohdazim.vercel.app/"},"articleSection":"Spring","inLanguage":"en-IN"}</script>
+    <style>
+      :root { color-scheme: light; font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; color: #191d24; background: #f7f5ef; }
+      * { box-sizing: border-box; }
+      body { margin: 0; color: #191d24; background: #f7f5ef; line-height: 1.75; }
+      a { color: #8a3515; }
+      .site-header, main, footer { width: min(100% - 2rem, 760px); margin-inline: auto; }
+      .site-header { padding-block: 1.5rem; border-bottom: 1px solid #d5d0c6; }
+      .site-header a { color: #191d24; text-decoration: none; font-weight: 650; }
+      main { padding-block: 2rem 4rem; }
+      nav[aria-label="Breadcrumb"] { font-size: .9rem; margin-bottom: 2rem; }
+      .eyebrow, .meta { color: #55514a; font-size: .9rem; }
+      h1 { font-size: clamp(2rem, 7vw, 3.25rem); line-height: 1.15; letter-spacing: -.035em; margin: .5rem 0 1rem; }
+      .excerpt { font-size: 1.15rem; color: #37342f; }
+      article { margin-top: 2.5rem; }
+      article h2 { font-size: 1.5rem; line-height: 1.35; margin: 2rem 0 .75rem; }
+      article h3, article h4 { line-height: 1.4; margin-top: 1.75rem; }
+      article p, article li { color: #191d24; }
+      article li { margin-block: .5rem; }
+      pre { overflow-x: auto; padding: 1rem; border: 1px solid #d5d0c6; border-radius: .4rem; background: #eeece6; color: #191d24; }
+      code { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; }
+      footer { border-top: 1px solid #d5d0c6; padding-block: 1.5rem 2rem; color: #45413b; }
+      @media (max-width: 480px) { .site-header, main, footer { width: min(100% - 1.5rem, 760px); } }
+    </style>
+  </head>
+  <body>
+    <header class="site-header"><a href="/">Mohd Azim <span aria-hidden="true">·</span> Portfolio</a></header>
+    <main>
+      <nav aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/#blog">Articles</a> / Spring @Transactional Propagation: What to Use and When</nav>
+      <article>
+        <header>
+          <p class="eyebrow">Spring</p>
+          <h1>Spring @Transactional Propagation: What to Use and When</h1>
+          <p class="excerpt">What happens when one Spring service calls another? Here is how the propagation options handle that, and the cases where each one is useful.</p>
+          <p class="meta">By <a href="/">Mohd Azim</a> · <time datetime="2026-11-04">4 November 2026</time> · 4 min read</p>
+        </header>
+        <p>When one Spring service calls another, the second method has to decide what to do with the transaction already in progress. That decision is propagation. It applies to transactions managed inside your application; it cannot make a database update and a remote HTTP call commit or roll back together.</p>
+<h2>REQUIRED — the usual choice</h2>
+<p>If a transaction is already open, REQUIRED joins it. If not, Spring starts one. This is the default, and it fits most business operations. For example, saving an order and its items should normally succeed or fail together.</p>
+<p>Because both methods share the same transaction, an inner method can mark it rollback-only. Catching an exception in the caller does not necessarily make that transaction safe to commit.</p>
+<h2>REQUIRES_NEW — commit separately</h2>
+<p>This pauses the current transaction and starts another one. The inner work can commit even if the outer transaction later rolls back. That can be useful for an audit record that must survive a failed business operation.</p>
+<p>Use it sparingly. The outer transaction may still hold locks or a database connection while it is paused, and the new transaction needs its own resources. It is not a general fix for rollback problems.</p>
+<h2>SUPPORTS — join if there is a transaction</h2>
+<p>SUPPORTS joins a transaction when the caller has one; otherwise, the method runs without one. It can suit work that is fine either way, but it does not guarantee atomic writes when called on its own.</p>
+<h2>NOT_SUPPORTED — run outside the caller&#39;s transaction</h2>
+<p>This suspends any current transaction while the method runs. It can be useful for work that should not keep a database transaction open, such as an independent operation that takes a while. It is a poor fit when the work needs the caller&#39;s transactional view or must roll back with it.</p>
+<h2>MANDATORY — require a transaction</h2>
+<p>MANDATORY joins the caller&#39;s transaction and throws an IllegalTransactionStateException if there isn&#39;t one. Use it when a lower-level operation must always be part of a larger transactional workflow. It makes accidental calls outside that workflow fail early.</p>
+<h2>NEVER — reject a transaction</h2>
+<p>NEVER runs without a transaction and throws an IllegalTransactionStateException if one is active. This is uncommon; choose it only when running inside a transaction is specifically an error, not as a routine performance setting.</p>
+<h2>NESTED — use a savepoint</h2>
+<p>When a transaction exists, NESTED creates a savepoint. The inner work can roll back to that point while the outer transaction continues. Without an existing transaction, it behaves like REQUIRED. It is not the same as REQUIRES_NEW: the nested work does not commit independently, and savepoint support depends on the transaction manager.</p>
+<h2>A few things to check</h2>
+<ul><li>REQUIRED is a good starting point. Pick another option when you need its particular commit or rollback behavior.</li><li>With Spring&#39;s default proxy-based transactions, a method calling another transactional method on the same object bypasses the proxy. The second method&#39;s propagation setting is then not applied.</li><li>By default, Spring rolls back on unchecked exceptions and Error, but not every checked exception. Use rollbackFor when checked exceptions should trigger a rollback.</li><li>A database transaction cannot undo a request already sent to another service. For cross-service workflows, consider an outbox or a saga rather than keeping a database transaction open across network calls.</li></ul>
+<p>In most cases, REQUIRED is enough. I reach for another propagation mode only when its boundary and failure behavior are clear.</p>
+      </article>
+    </main>
+    <footer>
+      <p>Written by Mohd Azim, Senior Software Engineer.</p>
+      <p><a href="/#blog">More articles</a> · <a href="/#contact">Contact</a> · <a href="https://www.linkedin.com/in/mohd-azim-922373204" rel="me noopener noreferrer">LinkedIn</a></p>
+    </footer>
+  </body>
+</html>

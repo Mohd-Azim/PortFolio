@@ -1,20 +1,20 @@
 export const portfolio = {
   site: {
-    domain: 'mohdazim.dev',
-    title: 'Mohd Azim — Java Backend Engineer | Spring Boot • Microservices • AI',
+    domain: 'mohdazim.vercel.app',
+    title: 'Mohd Azim — Senior Software Engineer | Java • Spring Boot • Microservices',
     year: 2026,
   },
   personal: {
     firstName: 'Mohd',
     lastName: 'Azim',
     fullName: 'Mohd Azim',
-    role: 'Java Backend Engineer',
+    role: 'Senior Software Engineer',
     tagline:
-      'Building scalable enterprise systems with Java, Spring Boot & Microservices. I turn complex problems into clean, performant code.',
+      'Senior Software Engineer building reliable backend systems with Java and Spring Boot. Currently developing E-KYC services for Airtel Payments Bank.',
     summary:
-      "Software Engineer with 3+ years of experience building scalable backend systems using Java, Spring Boot, and Microservices. Delivered high-throughput billing and subscription platforms serving 27M+ end users at Paytm and led a Java 1.6 → Java 21 modernization of a large-scale enterprise codebase.",
+      "Senior Software Engineer at Quesscorp, working from the Airtel Payments Bank client location in Gurugram as a backend developer on the E-KYC project. Previously built enterprise Java systems at Paytm and Publicis Sapient, including high-throughput billing platforms and commodity-trading solutions.",
     about:
-      "I'm a passionate Java Backend Engineer specializing in Backend Development, Spring Boot, Java, Python, REST APIs, and Microservices. I enjoy building scalable enterprise applications and solving complex software engineering problems.",
+      "I'm a Senior Software Engineer specializing in backend development with Java, Spring Boot, REST APIs, and microservices. At Quesscorp, I work on the E-KYC project for Airtel Payments Bank in Gurugram.",
     domains:
       'telecom billing, enterprise trading, AI-augmented backends and subscription platforms',
     email: 'mohdazim6309@gmail.com',
@@ -22,16 +22,16 @@ export const portfolio = {
     location: 'Delhi, India',
     linkedin: 'https://www.linkedin.com/in/mohd-azim-922373204',
     linkedinHandle: 'www.linkedin.com/in/mohd-azim-922373204',
+    leetcode: 'https://leetcode.com/u/azimsheikh/',
     github: 'https://github.com/Mohd-Azim',
     githubHandle: '@Mohd-Azim',
-    resumeUrl: '/resume/resume.pdf',
-    availability: 'Open to new opportunities',
-    openTo: 'Open to remote & enterprise contracts',
+    availability: 'Senior Software Engineer at Quesscorp',
+    openTo: 'Backend developer on the E-KYC project for Airtel Payments Bank',
   },
   hero: {
     codeSnippet: {
       name: '"Mohd Azim"',
-      role: '"Java Backend Engineer"',
+      role: '"Senior Software Engineer"',
       stack: ['"Java"', '"Spring Boot"', '"Kafka"', '"Python"'],
     },
     badges: ['Java', 'Spring Boot', 'Microservices', 'Kafka', 'Spring AI'],
@@ -114,9 +114,19 @@ export const portfolio = {
   ],
   experience: [
     {
+      company: 'Quesscorp',
+      role: 'Senior Software Engineer — Backend Developer',
+      period: 'Nov 2026 – Present',
+      location: 'Airtel Payments Bank, Gurugram',
+      highlights: [
+        'Developing backend services for the E-KYC project at the Airtel Payments Bank client location.',
+        'Building and maintaining backend functionality using Java and Spring Boot.',
+      ],
+    },
+    {
       company: 'Paytm (One97 Communications)',
       role: 'Software Engineer',
-      period: 'Sep 2025 – Present',
+      period: 'Sep 2025 – 2026',
       location: 'Noida, India',
       highlights: [
         'Led Java 1.6 → Java 21 modernization of a 15-year-old enterprise codebase with zero production downtime.',

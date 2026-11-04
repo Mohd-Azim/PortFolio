@@ -7,7 +7,7 @@ export default function Projects() {
     <section
       id="projects"
       className="relative z-10 py-24 bg-secondary/20"
-      aria-label="Software Projects by Mohd Azim — Java Backend Engineer"
+      aria-label="Software Projects by Mohd Azim — Senior Software Engineer"
     >
       <div className="section-container">
         <motion.div

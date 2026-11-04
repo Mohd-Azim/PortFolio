@@ -44,7 +44,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer me"
                   className="hover:text-primary transition-colors"
-                  aria-label="Mohd Azim on LinkedIn — Java Backend Engineer"
+                  aria-label="Mohd Azim on LinkedIn — Senior Software Engineer"
                 >
                   LinkedIn
                 </a>
@@ -58,6 +58,17 @@ export default function Footer() {
                   aria-label="Mohd Azim on GitHub — Spring Boot & Java Projects"
                 >
                   GitHub
+                </a>
+              </li>
+              <li>
+                <a
+                  href={personal.leetcode}
+                  target="_blank"
+                  rel="noopener noreferrer me"
+                  className="hover:text-primary transition-colors"
+                  aria-label="Mohd Azim on LeetCode"
+                >
+                  LeetCode
                 </a>
               </li>
               <li>
@@ -82,7 +93,7 @@ export default function Footer() {
             . All rights reserved.
           </p>
           <p className="mt-1">
-            Java Backend Engineer — Spring Boot • Microservices • Kafka • AI. Delhi, India.
+            Senior Software Engineer — Java • Spring Boot • Microservices • Kafka. India.
           </p>
         </div>
       </div>

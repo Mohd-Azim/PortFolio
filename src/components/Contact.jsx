@@ -80,6 +80,12 @@ export default function Contact() {
     },
     {
       icon: Code2,
+      label: 'LeetCode',
+      value: 'leetcode.com/u/azimsheikh',
+      href: personal.leetcode,
+    },
+    {
+      icon: Code2,
       label: 'GitHub',
       value: personal.githubHandle,
       href: personal.github,
@@ -89,7 +95,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      aria-label="Contact Mohd Azim — Java Backend Engineer"
+      aria-label="Contact Mohd Azim — Senior Software Engineer"
       className="relative z-10 py-24 bg-secondary/20"
     >
       <div className="section-container">
@@ -103,8 +109,8 @@ export default function Contact() {
           <p className="text-sm font-medium text-primary">Contact</p>
           <h2 className="section-title mt-2">Let&apos;s build something</h2>
           <p className="section-subtitle mx-auto max-w-xl">
-            Have a project in mind, a role to discuss, or just want to say hi? Fill out the form
-            below — I&apos;ll get back to you within 24 hours.
+            For my resume or any other details, connect with me on LinkedIn or email me. You can
+            also send a message using the form below.
           </p>
         </motion.div>
 
@@ -142,7 +148,7 @@ export default function Contact() {
             </div>
 
             <div className="mt-8 glass-card p-6">
-              <p className="text-sm font-medium text-primary">Available for opportunities</p>
+              <p className="text-sm font-medium text-primary">Current role</p>
               <p className="mt-1 text-sm text-muted-foreground">{personal.openTo}</p>
             </div>
 

@@ -1,4 +1,4 @@
-# robots.txt — Mohd Azim Portfolio (mohdazim.dev)
+# robots.txt — Mohd Azim Portfolio (mohdazim.vercel.app)
 # Last updated: 2026-06-30
 
 # ── General search engine crawlers ──────────────────────────────────────────
@@ -68,4 +68,4 @@ User-agent: Mistral-AI
 Allow: /
 
 # ── Sitemap ──────────────────────────────────────────────────────────────────
-Sitemap: https://mohdazim.dev/sitemap.xml
+Sitemap: https://mohdazim.vercel.app/sitemap.xml

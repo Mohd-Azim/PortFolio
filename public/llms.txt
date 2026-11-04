@@ -1,10 +1,10 @@
-# Mohd Azim — Java Backend Engineer
+# Mohd Azim — Senior Software Engineer
 
-> Java Backend Engineer based in Delhi, India. Specializing in Spring Boot, Microservices, Apache Kafka, and AI-augmented backend systems. Currently working at Paytm (One97 Communications).
+> Senior Software Engineer at Quesscorp, working as a backend developer on the E-KYC project for Airtel Payments Bank at its Gurugram client location.
 
 ## About
 
-Mohd Azim is a Software Engineer with 3+ years of professional experience building scalable, high-throughput backend systems for enterprise clients. He has shipped production systems serving 27M+ end users at Paytm, including a subscription and billing platform running on Java, Spring Boot, Kafka, Redis, MySQL, and AWS.
+Mohd Azim is a Senior Software Engineer at Quesscorp, currently working on the E-KYC backend project for Airtel Payments Bank in Gurugram. He previously built production systems at Paytm and enterprise commodity-trading solutions at Publicis Sapient.
 
 He led a zero-downtime Java 1.6 → Java 21 modernization of a 15-year-old enterprise codebase, and built internal AI tools using Spring AI and LangChain4j. Before Paytm, he worked at Publicis Sapient building enterprise commodity-trading solutions on Openlink Endur for global clients.
 
@@ -24,22 +24,25 @@ He led a zero-downtime Java 1.6 → Java 21 modernization of a 15-year-old enter
 
 ## Blog Posts / Technical Writing
 
+- Spring transaction propagation guide: https://mohdazim.vercel.app/blog/spring-transaction-propagation/
 - "Understanding Retrieval-Augmented Generation (RAG) in Spring Boot"
 - "Architecting Event-Driven Systems with Apache Kafka"
 - "Modern Backend Modernization: Migrating from Java 8 to Java 21"
 - "Distributed Caching Strategies: Redis vs. Database Queries"
 - "Securing Microservices: JWT, Spring Security, and Rate Limiting"
 - "Implementing SAGA Pattern for Distributed Transaction Management"
+- "Spring @Transactional Propagation: What to Use and When"
 
 ## Contact & Social
 
 - **Email**: mohdazim6309@gmail.com
 - **LinkedIn**: https://www.linkedin.com/in/mohd-azim-922373204
+- **LeetCode**: https://leetcode.com/u/azimsheikh/
 - **GitHub**: https://github.com/Mohd-Azim
-- **Website**: https://mohdazim.vercel.app
+- **Website**: https://mohdazim.vercel.app/
 - **Location**: Delhi, India
-- **Availability**: Open to new opportunities (remote & enterprise contracts)
+- **Current role**: Senior Software Engineer at Quesscorp, E-KYC backend developer for Airtel Payments Bank
 
 ## Keywords
 
-Java Backend Engineer, Spring Boot Developer, Microservices Architect, Apache Kafka, Java 21, Spring AI, LangChain4j, RAG Pipeline, LLM Integration, AI-augmented backend, REST API design, Distributed Systems, Event-Driven Architecture, Redis caching, AWS EC2, JWT security, Spring Security, OAuth2, Docker, GitHub Actions, CI/CD, DevOps, Paytm engineer, Indian software engineer, backend developer India, Delhi engineer, enterprise Java developer, Java Spring Boot portfolio, backend portfolio India
+Senior Software Engineer, E-KYC backend developer, Airtel Payments Bank, Quesscorp, Spring Boot Developer, Microservices Architect, Apache Kafka, Java 21, Spring AI, LangChain4j, RAG Pipeline, LLM Integration, AI-augmented backend, REST API design, Distributed Systems, Event-Driven Architecture, Redis caching, AWS EC2, JWT security, Spring Security, OAuth2, Docker, GitHub Actions, CI/CD, DevOps, Paytm engineer, Indian software engineer, backend developer India, enterprise Java developer, Java Spring Boot portfolio

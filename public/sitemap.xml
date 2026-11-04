@@ -4,122 +4,135 @@
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
-  <!-- Homepage / Root -->
   <url>
-    <loc>https://mohdazim.dev/</loc>
-    <lastmod>2026-06-30</lastmod>
+    <loc>https://mohdazim.vercel.app/</loc>
+    <lastmod>2026-11-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
 
-  <!-- About Section -->
   <url>
-    <loc>https://mohdazim.dev/#about</loc>
-    <lastmod>2026-06-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <!-- Skills Section -->
-  <url>
-    <loc>https://mohdazim.dev/#skills</loc>
-    <lastmod>2026-06-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- System Design Section -->
-  <url>
-    <loc>https://mohdazim.dev/#system-design</loc>
-    <lastmod>2026-06-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Experience Section -->
-  <url>
-    <loc>https://mohdazim.dev/#experience</loc>
-    <lastmod>2026-06-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <!-- Projects Section -->
-  <url>
-    <loc>https://mohdazim.dev/#projects</loc>
-    <lastmod>2026-06-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <!-- Blog Section — RAG in Spring Boot -->
-  <url>
-    <loc>https://mohdazim.dev/#blog</loc>
-    <lastmod>2026-06-30</lastmod>
+    <loc>https://mohdazim.vercel.app/llms.txt</loc>
+    <lastmod>2026-11-04</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.3</priority>
   </url>
 
-  <!-- Blog Post — RAG Spring Boot -->
   <url>
-    <loc>https://mohdazim.vercel.app/#rag-spring-boot</loc>
+    <loc>https://mohdazim.vercel.app/manifest.webmanifest</loc>
+    <lastmod>2026-11-04</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.1</priority>
+  </url>
+
+  <url>
+    <loc>https://mohdazim.vercel.app/robots.txt</loc>
+    <lastmod>2026-11-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.1</priority>
+  </url>
+
+  <url>
+    <loc>https://mohdazim.vercel.app/#about</loc>
+    <lastmod>2026-11-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://mohdazim.vercel.app/#skills</loc>
+    <lastmod>2026-11-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://mohdazim.vercel.app/#system-design</loc>
+    <lastmod>2026-11-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://mohdazim.vercel.app/#experience</loc>
+    <lastmod>2026-11-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://mohdazim.vercel.app/#projects</loc>
+    <lastmod>2026-11-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://mohdazim.vercel.app/#blog</loc>
+    <lastmod>2026-11-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://mohdazim.vercel.app/#education</loc>
+    <lastmod>2026-11-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://mohdazim.vercel.app/#contact</loc>
+    <lastmod>2026-11-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://mohdazim.vercel.app/blog/spring-transaction-propagation/</loc>
+    <lastmod>2026-11-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://mohdazim.vercel.app/blog/rag-spring-boot/</loc>
     <lastmod>2026-06-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
-  <!-- Blog Post — Kafka Event Driven -->
   <url>
-    <loc>https://mohdazim.vercel.app/#event-driven-kafka</loc>
+    <loc>https://mohdazim.vercel.app/blog/event-driven-kafka/</loc>
     <lastmod>2026-06-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
-  <!-- Blog Post — Java 21 Migration -->
   <url>
-    <loc>https://mohdazim.vercel.app/#java-21-modernization</loc>
+    <loc>https://mohdazim.vercel.app/blog/java-21-modernization/</loc>
     <lastmod>2026-06-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
-  <!-- Blog Post — Redis Caching -->
   <url>
-    <loc>https://mohdazim.vercel.app/#redis-caching-strategies</loc>
+    <loc>https://mohdazim.vercel.app/blog/redis-caching-strategies/</loc>
     <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
-  <!-- Blog Post — Microservice Security -->
   <url>
-    <loc>https://mohdazim.vercel.app/#microservice-security</loc>
+    <loc>https://mohdazim.vercel.app/blog/microservice-security/</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
-  <!-- Blog Post — SAGA Pattern -->
   <url>
-    <loc>https://mohdazim.vercel.app/#saga-distributed-transactions</loc>
+    <loc>https://mohdazim.vercel.app/blog/saga-distributed-transactions/</loc>
     <lastmod>2026-05-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <!-- Education Section -->
-  <url>
-    <loc>https://mohdazim.dev/#education</loc>
-    <lastmod>2026-06-30</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
-  <!-- Contact Section -->
-  <url>
-    <loc>https://mohdazim.dev/#contact</loc>
-    <lastmod>2026-06-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

@@ -7,7 +7,7 @@ export default function Experience() {
     <section
       id="experience"
       className="relative z-10 py-24"
-      aria-label="Work Experience — Mohd Azim Java Backend Engineer"
+      aria-label="Work Experience — Mohd Azim Senior Software Engineer"
     >
       <div className="section-container">
         <motion.div

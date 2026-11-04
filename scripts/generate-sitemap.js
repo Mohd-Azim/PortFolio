@@ -5,7 +5,7 @@ import { fileURLToPath, pathToFileURL } from 'url'
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const publicDir = path.resolve(__dirname, '../public')
 const outputPath = path.join(publicDir, 'sitemap.xml')
-const domain = 'https://mohdazim.dev'
+const domain = 'https://mohdazim.vercel.app'
 
 const portfolioPath = path.join(__dirname, '../src/data/portfolio.js')
 const blogDataPath = path.join(__dirname, '../src/data/blog.json')
@@ -21,7 +21,7 @@ const sectionUrls = portfolio.navLinks.map((link) => ({
 }))
 
 const blogUrls = blogData.map((post) => ({
-  loc: `${domain}/#${post.id}`,
+  loc: `${domain}/blog/${post.id}/`,
   lastmod: post.date,
   changefreq: 'monthly',
   priority: 0.7,
@@ -29,7 +29,6 @@ const blogUrls = blogData.map((post) => ({
 
 const staticUrls = [
   { loc: `${domain}/`, changefreq: 'monthly', priority: 1.0 },
-  { loc: `${domain}/resume/resume.pdf`, changefreq: 'yearly', priority: 0.5 },
   { loc: `${domain}/llms.txt`, changefreq: 'weekly', priority: 0.3 },
   { loc: `${domain}/manifest.webmanifest`, changefreq: 'yearly', priority: 0.1 },
   { loc: `${domain}/robots.txt`, changefreq: 'weekly', priority: 0.1 },

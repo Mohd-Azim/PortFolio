@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { ArrowDown, Download, Mail } from 'lucide-react'
+import { ArrowDown, Mail, Link } from 'lucide-react'
 import { portfolio } from '../data/portfolio'
 import InteractiveTerminal from './InteractiveTerminal'
 
@@ -30,11 +30,7 @@ export default function Hero() {
           </div>
 
           <p className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-xl">
-            {personal.tagline.split('Java, Spring Boot & Microservices')[0]}
-            <span className="text-primary font-medium">
-              Java, Spring Boot & Microservices
-            </span>
-            {personal.tagline.split('Java, Spring Boot & Microservices')[1]}
+            {personal.tagline}
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">
@@ -45,19 +41,20 @@ export default function Hero() {
               View Projects
             </a>
             <a
-              href={personal.resumeUrl}
-              download="Mohd_Azim_Resume.pdf"
+              href={personal.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-lg border border-border bg-secondary/50 px-6 py-3 text-sm font-medium transition-colors hover:border-primary/50 hover:text-primary"
             >
-              <Download size={16} />
-              Resume
+              <Link size={16} />
+              Connect on LinkedIn
             </a>
             <a
-              href="#contact"
+              href={`mailto:${personal.email}`}
               className="inline-flex items-center gap-2 rounded-lg border border-border bg-secondary/50 px-6 py-3 text-sm font-medium transition-colors hover:border-primary/50 hover:text-primary"
             >
               <Mail size={16} />
-              Contact
+              Email for Resume or Details
             </a>
           </div>
 

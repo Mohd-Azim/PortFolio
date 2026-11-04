@@ -62,6 +62,7 @@
 
   html {
     scroll-behavior: smooth;
+    overflow-x: clip;
   }
 
   /* ── Retro headings: Playfair Display ───────────────────────────────── */

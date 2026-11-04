@@ -8,19 +8,20 @@ export default function About() {
     <section
       id="about"
       className="relative z-10 py-24"
-      aria-label="About Mohd Azim — Java Backend Engineer"
+      aria-label="About Mohd Azim — Senior Software Engineer"
       itemScope
       itemType="https://schema.org/Person"
     >
       {/* Hidden machine-readable identity signals for crawlers */}
       <meta itemProp="name" content="Mohd Azim" />
-      <meta itemProp="jobTitle" content="Java Backend Engineer" />
-      <meta itemProp="url" content="https://mohdazim.dev" />
+      <meta itemProp="jobTitle" content="Senior Software Engineer" />
+      <meta itemProp="url" content="https://mohdazim.vercel.app/" />
       <meta itemProp="email" content="mohdazim6309@gmail.com" />
       <meta itemProp="addressLocality" content="Delhi" />
       <meta itemProp="addressCountry" content="IN" />
       <link itemProp="sameAs" href="https://www.linkedin.com/in/mohd-azim-922373204" />
       <link itemProp="sameAs" href="https://github.com/Mohd-Azim" />
+      <link itemProp="sameAs" href="https://leetcode.com/u/azimsheikh/" />
 
       <div className="section-container">
         <motion.div
@@ -44,9 +45,9 @@ export default function About() {
             className="space-y-4 text-muted-foreground leading-relaxed"
           >
             <p itemProp="description">
-              {personal.about.split('Java Backend Engineer')[0]}
-              <span className="text-foreground font-medium">Java Backend Engineer</span>
-              {personal.about.split('Java Backend Engineer')[1]}
+              {personal.about.split(personal.role)[0]}
+              <span className="text-foreground font-medium">{personal.role}</span>
+              {personal.about.split(personal.role)[1]}
             </p>
             <p>{personal.summary}</p>
             <p>

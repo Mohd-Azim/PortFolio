@@ -8,7 +8,7 @@ export default function Chatbot() {
   const [messages, setMessages] = useState([
     {
       sender: 'bot',
-      text: "Hi there! 👋 I'm Azim's Bot Assistant. Ask me anything about my tech stack, experience at Paytm, AI work, or how to schedule a call!"
+      text: "Hi there! 👋 I'm Azim's Bot Assistant. Ask me about my E-KYC work at Airtel Payments Bank, tech stack, past experience, or how to get in touch!"
     }
   ])
   const [isTyping, setIsTyping] = useState(false)

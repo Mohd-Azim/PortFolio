@@ -6,7 +6,7 @@ export default function Skills() {
     <section
       id="skills"
       className="relative z-10 py-24 bg-secondary/20"
-      aria-label="Technical Skills — Mohd Azim Java Backend Engineer"
+      aria-label="Technical Skills — Mohd Azim Senior Software Engineer"
     >
       <div className="section-container">
         <motion.div

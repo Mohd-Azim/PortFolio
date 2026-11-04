@@ -30,10 +30,10 @@
     "answer": "Yes! I designed and built an Operational Incident Intelligence service at Paytm using Spring AI and LangChain4j. It runs semantic search and RAG pipelines over configurations, runbooks, and contracts, significantly reducing MTTR for billing-related incidents."
   },
   {
-    "id": "availability",
-    "label": "Job Availability",
-    "question": "Are you open to contract or full-time roles?",
-    "answer": "Yes! I am currently 'Open to new opportunities', including remote work, full-time backend engineering positions, and enterprise contracts."
+    "id": "current-role",
+    "label": "Current Role",
+    "question": "What are you working on now?",
+    "answer": "I am a Senior Software Engineer at Quesscorp, working as a backend developer on the E-KYC project for Airtel Payments Bank at the client location in Gurugram."
   },
   {
     "id": "contact",

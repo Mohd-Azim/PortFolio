@@ -17,5 +17,5 @@
   <text x="100" y="380" font-family="Inter, sans-serif" font-size="20" fill="#94a3b8">High-throughput backend systems, distributed architecture, and AI-augmented engineering.</text>
   <rect x="100" y="430" width="320" height="64" rx="16" fill="url(#accent)" />
   <text x="140" y="475" font-family="Inter, sans-serif" font-size="20" font-weight="700" fill="#0f172a">View my portfolio</text>
-  <text x="100" y="530" font-family="Inter, sans-serif" font-size="18" fill="#94a3b8">https://mohdazim.dev</text>
+  <text x="100" y="530" font-family="Inter, sans-serif" font-size="18" fill="#94a3b8">https://mohdazim.vercel.app</text>
 </svg>
