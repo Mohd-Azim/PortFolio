@@ -154,7 +154,7 @@ export default function Contact() {
             {/* Direct email CTA */}
             <div className="mt-6">
               <a
-                href={`mailto:${personal.email}`}
+                href={`mailto:${personal.email}?subject=${encodeURIComponent('Reaching out')}&body=${encodeURIComponent('Hi Mohd,\n\nI came across your portfolio and would like to reach out about...\n\nBest,\n[Your name]')}`}
                 className="inline-flex items-center gap-2 rounded border border-primary/40 bg-primary/10 px-5 py-2.5 text-sm font-medium text-primary transition-colors hover:bg-primary/20"
               >
                 <Mail size={16} />

@@ -28,7 +28,7 @@ export default function Navbar() {
           Mohd Azim
         </a>
 
-        <ul className="hidden items-center gap-8 md:flex">
+        <ul className="hidden items-center gap-8 xl:flex">
           {portfolio.navLinks.map((link) => (
             <li key={link.href}>
               <a
@@ -43,14 +43,14 @@ export default function Navbar() {
 
         <a
           href="#contact"
-          className="hidden rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90 md:inline-flex"
+          className="hidden rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90 xl:inline-flex"
         >
           Hire Me
         </a>
 
         <button
           type="button"
-          className="md:hidden text-foreground"
+          className="text-foreground xl:hidden"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
         >
@@ -64,7 +64,7 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="border-b border-border/50 bg-background/95 backdrop-blur-xl md:hidden"
+            className="border-b border-border/50 bg-background/95 backdrop-blur-xl xl:hidden"
           >
             <ul className="section-container flex flex-col gap-4 py-4">
               {portfolio.navLinks.map((link) => (
