@@ -28,7 +28,6 @@ export default function Contact() {
     const formUrl = 'https://docs.google.com/forms/d/e/1FAIpQLScWSifchRIYDAyxArssjGqk09fIAg--pm8IiMxcY1doCDERKQ/formResponse'
     const bodyParams = new URLSearchParams()
     
-    // Exact entry keys from user curl request
     bodyParams.append('entry.1301988031', formData.name)
     bodyParams.append('entry.1396968391', formData.email)
     bodyParams.append('entry.1860165093', formData.phone)
@@ -45,7 +44,7 @@ export default function Contact() {
         body: bodyParams.toString()
       })
 
-      toast.success('Response saved! Opening for new message.')
+      toast.success('Submission sent. Google Forms does not confirm delivery here; email me directly if you do not hear back.')
 
       // Reset form
       setFormData({
@@ -210,12 +209,13 @@ export default function Contact() {
               <div className="grid gap-4 sm:grid-cols-2">
                 <div>
                   <label htmlFor="phone" className="text-xs font-mono uppercase tracking-wider text-muted-foreground mb-1 block">
-                    Phone Number
+                    Phone Number <span className="text-primary">*</span>
                   </label>
                   <input
                     type="tel"
                     id="phone"
                     name="phone"
+                    required
                     value={formData.phone}
                     onChange={handleChange}
                     placeholder="e.g. +91 70XXXXXX29"

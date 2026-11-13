@@ -21,32 +21,70 @@
     <meta name="twitter:description" content="Hardening enterprise endpoints against credential stuffing, injection attacks, and DDoS spikes.">
     <meta name="twitter:image" content="https://mohdazim.vercel.app/og-image.svg">
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://mohdazim.vercel.app/blog/microservice-security/","mainEntityOfPage":{"@type":"WebPage","@id":"https://mohdazim.vercel.app/blog/microservice-security/"},"headline":"Securing Microservices: JWT, Spring Security, and Rate Limiting","description":"Hardening enterprise endpoints against credential stuffing, injection attacks, and DDoS spikes.","datePublished":"2026-06-05T00:00:00.000Z","dateModified":"2026-06-05T00:00:00.000Z","author":{"@type":"Person","@id":"https://mohdazim.vercel.app/#person","name":"Mohd Azim","url":"https://mohdazim.vercel.app/"},"articleSection":"Security","inLanguage":"en-IN"}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-      :root { color-scheme: light; font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; color: #191d24; background: #f7f5ef; }
+      :root { color-scheme: light; font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; color: #1a1e25; background: #f2efe8; }
       * { box-sizing: border-box; }
-      body { margin: 0; color: #191d24; background: #f7f5ef; line-height: 1.75; }
-      a { color: #8a3515; }
-      .site-header, main, footer { width: min(100% - 2rem, 760px); margin-inline: auto; }
-      .site-header { padding-block: 1.5rem; border-bottom: 1px solid #d5d0c6; }
-      .site-header a { color: #191d24; text-decoration: none; font-weight: 650; }
+      html { scroll-behavior: smooth; scroll-padding-top: 8rem; }
+      body { margin: 0; color: #1a1e25; background: #f2efe8; line-height: 1.75; }
+      a { color: #e25d12; }
+      .site-header { position: sticky; top: 0; z-index: 10; border-bottom: 1px solid #c9c1b4; background: rgb(242 239 232 / 94%); backdrop-filter: blur(16px); }
+      .nav-shell { width: min(100% - 2rem, 1200px); min-height: 4.5rem; margin-inline: auto; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: .25rem 1rem; padding-block: .5rem; }
+      .brand { color: #1a1e25; text-decoration: none; font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: .9rem; font-weight: 500; white-space: nowrap; }
+      .section-nav { grid-column: 1 / -1; grid-row: 2; display: flex; gap: 1.25rem; overflow-x: auto; padding: .35rem 0 .6rem; white-space: nowrap; scrollbar-width: none; }
+      .section-nav::-webkit-scrollbar { display: none; }
+      .section-nav a { color: #625e57; font-size: .8rem; text-decoration: none; transition: color .2s; }
+      .section-nav a:hover, .section-nav a:focus-visible { color: #e25d12; }
+      .back-link { justify-self: end; border: 1px solid #e25d12; border-radius: .25rem; padding: .45rem .7rem; color: #a63e08; font-size: .8rem; font-weight: 600; text-decoration: none; white-space: nowrap; transition: background .2s, color .2s; }
+      .back-link:hover, .back-link:focus-visible { color: #fffaf3; background: #e25d12; }
+      main, footer { width: min(100% - 2rem, 760px); margin-inline: auto; }
       main { padding-block: 2rem 4rem; }
-      nav[aria-label="Breadcrumb"] { font-size: .9rem; margin-bottom: 2rem; }
-      .eyebrow, .meta { color: #55514a; font-size: .9rem; }
-      h1 { font-size: clamp(2rem, 7vw, 3.25rem); line-height: 1.15; letter-spacing: -.035em; margin: .5rem 0 1rem; }
-      .excerpt { font-size: 1.15rem; color: #37342f; }
+      nav[aria-label="Breadcrumb"] { margin-bottom: 2rem; color: #625e57; font-size: .9rem; }
+      nav[aria-label="Breadcrumb"] a { text-decoration: none; }
+      .eyebrow, .meta { color: #625e57; font-size: .9rem; }
+      h1, h2, h3, h4 { font-family: "Playfair Display", Georgia, "Times New Roman", serif; letter-spacing: -.01em; }
+      h1 { font-size: clamp(2rem, 7vw, 3.25rem); line-height: 1.15; margin: .5rem 0 1rem; }
+      .excerpt { color: #494640; font-size: 1.15rem; }
       article { margin-top: 2.5rem; }
-      article h2 { font-size: 1.5rem; line-height: 1.35; margin: 2rem 0 .75rem; }
-      article h3, article h4 { line-height: 1.4; margin-top: 1.75rem; }
-      article p, article li { color: #191d24; }
+      article h2 { font-size: 1.5rem; line-height: 1.35; margin: 2rem 0 .75rem; scroll-margin-top: 8rem; }
+      article h3, article h4 { line-height: 1.4; margin-top: 1.75rem; scroll-margin-top: 8rem; }
+      article p, article li { color: #1a1e25; }
       article li { margin-block: .5rem; }
-      pre { overflow-x: auto; padding: 1rem; border: 1px solid #d5d0c6; border-radius: .4rem; background: #eeece6; color: #191d24; }
+      pre { overflow-x: auto; padding: 1rem; border: 1px solid #c9c1b4; border-radius: .25rem; background: #e8e2d7; color: #1a1e25; }
       code { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; }
-      footer { border-top: 1px solid #d5d0c6; padding-block: 1.5rem 2rem; color: #45413b; }
-      @media (max-width: 480px) { .site-header, main, footer { width: min(100% - 1.5rem, 760px); } }
+      footer { border-top: 1px solid #c9c1b4; padding-block: 1.5rem 2rem; color: #494640; }
+      footer a { text-decoration: none; }
+      @media (min-width: 900px) {
+        .nav-shell { display: flex; gap: 1.5rem; }
+        .section-nav { flex: 1; justify-content: center; gap: clamp(.6rem, 1.5vw, 1.25rem); overflow: visible; padding: 0; }
+        .section-nav a { font-size: .78rem; }
+      }
+      @media (max-width: 480px) {
+        .nav-shell, main, footer { width: min(100% - 1.5rem, 760px); }
+        .brand { font-size: .8rem; }
+        .back-link { padding: .4rem .55rem; font-size: .75rem; }
+      }
     </style>
   </head>
   <body>
-    <header class="site-header"><a href="/">Mohd Azim <span aria-hidden="true">·</span> Portfolio</a></header>
+    <header class="site-header">
+      <div class="nav-shell">
+        <a class="brand" href="/">Mohd Azim <span aria-hidden="true">·</span> Portfolio</a>
+        <nav class="section-nav" aria-label="Portfolio sections">
+          <a href="/#about">About</a>
+          <a href="/#skills">Skills</a>
+          <a href="/#system-design">System Design</a>
+          <a href="/#experience">Experience</a>
+          <a href="/#projects">Projects</a>
+          <a href="/#blog">Blog</a>
+          <a href="/#education">Education</a>
+          <a href="/#contact">Contact</a>
+        </nav>
+        <a class="back-link" href="/">&larr; Back to portfolio</a>
+      </div>
+    </header>
     <main>
       <nav aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/#blog">Articles</a> / Securing Microservices: JWT, Spring Security, and Rate Limiting</nav>
       <article>
