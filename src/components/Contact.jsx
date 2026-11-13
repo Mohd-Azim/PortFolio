@@ -44,7 +44,7 @@ export default function Contact() {
         body: bodyParams.toString()
       })
 
-      toast.success('Submission sent. Google Forms does not confirm delivery here; email me directly if you do not hear back.')
+      toast.success('Message sent')
 
       // Reset form
       setFormData({
